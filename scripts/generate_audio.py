@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Create Czech MP3 narration for blog articles with Azure Speech."""
+"""Create Czech MP3 narration for blog articles with Azure Speech (Vlasta Neural)."""
 from __future__ import annotations
 
 import html
@@ -99,3 +99,4 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
+
