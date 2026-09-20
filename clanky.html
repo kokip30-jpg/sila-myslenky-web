@@ -15,6 +15,7 @@ function draw(){const q=clean(input.value.trim());const found=articles.filter(a=
 (async()=>{try{const xml=await (await fetch('sitemap.xml',{cache:'no-store'})).text();const urls=[...xml.matchAll(/<loc>(https:\/\/sila-myslenky\.com\/blog\/[^<]+)<\/loc>/g)].map(m=>m[1]).reverse();articles=await Promise.all(urls.map(async url=>{try{const doc=new DOMParser().parseFromString(await (await fetch(url,{cache:'no-store'})).text(),'text/html');return {url,title:doc.querySelector('h1')?.textContent.trim()||doc.title.replace(/\s*\|.*$/,''),description:doc.querySelector('meta[name="description"]')?.content||'Otevřít článek.'}}catch{return {url,title:'Článek Síly myšlenky',description:'Otevřít článek.'}}}));draw()}catch{count.textContent='Články se nepodařilo načíst.';list.innerHTML='<p class="loading">Obnov stránku a zkus to znovu.</p>'}})();input.addEventListener('input',draw);
 </script>
 <!-- Cloudflare Web Analytics --><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"b542733f5096473eb1f3784915fd044a"}'></script>
-</body></html>
+<script src="assets/analytics.js" defer></script></body></html>
+
 
 
