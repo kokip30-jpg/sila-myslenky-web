@@ -129,13 +129,22 @@ footer a{text-decoration:none}
   .hero > *{position:relative}
   main h1,main h2,main p,main blockquote,.answer{text-shadow:0 2px 12px var(--bg),0 0 34px var(--bg)}
 }
-@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+/* Lehký prostorový efekt pro mobil: žádný WebGL, plynulý i na starších telefonech. */
+.mobile-heart{display:none}
+@media (max-width:800px){
+  .mobile-heart{display:block;position:fixed;z-index:0;pointer-events:none;width:178px;height:178px;right:-46px;top:22svh;transform:rotate(-15deg);border-radius:44% 52% 48% 46%;background:radial-gradient(circle at 28% 23%,#fff4fb 0 2%,#f4a1c1 14%,#c34f83 42%,#58234e 76%,#211a35 100%);box-shadow:-18px 24px 46px rgba(0,0,0,.34),inset 14px 14px 20px rgba(255,255,255,.22),inset -18px -22px 30px rgba(30,10,38,.45);animation:sm-float 7s ease-in-out infinite}
+  .mobile-heart::before,.mobile-heart::after{content:"";position:absolute;width:96px;height:96px;border-radius:50%;top:-33px;background:inherit;box-shadow:inset 10px 8px 15px rgba(255,255,255,.13)}
+  .mobile-heart::before{left:1px}.mobile-heart::after{right:1px}
+  @keyframes sm-float{50%{transform:translate3d(-10px,13px,0) rotate(-8deg) scale(1.035);filter:saturate(1.08)}}
+  #scene{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}.mobile-heart{animation:none}}
 </style>
 <meta name="msvalidate.01" content="2061DEC4C7C23F079F486945C9E3084E">
 <script type="application/ld+json">{"name":"Síla myšlenky","sameAs":["https://www.instagram.com/sila_myslenky_/","https://www.facebook.com/profile.php?id=61565212696845"],"url":"https://sila-myslenky.com/","@type":"Organization","@context":"https://schema.org"}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-4T1H4JWKTB"></script>
 <script>window.dataLayer=window.dataLayer||[];window.gtag=function(){dataLayer.push(arguments)};window.__smTagLoaded=true;window.gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'});</script><script>if(location.hash==="#blog")location.replace("blog/");</script></head>
 <body>
-<canvas id="scene" aria-hidden="true"></canvas>
+<canvas id="scene" aria-hidden="true"></canvas><div class="mobile-heart" aria-hidden="true"></div>
 <div class="scrim" aria-hidden="true"></div>
 <div class="stagefade" aria-hidden="true"></div>
 
@@ -265,7 +274,7 @@ window.addEventListener("load",()=>{(function(){
   const io = new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('on'); }),{rootMargin:'0px 0px -35% 0px'});
   days.forEach(d=>io.observe(d));
 
-  if (!window.THREE) return;
+  if (innerWidth <= 800 || !window.THREE) return;
 
   /* ---------- 3D scéna: rozbitý měsíc, který se skládá ---------- */
   const canvas = document.getElementById('scene');
@@ -471,6 +480,7 @@ window.addEventListener("load",()=>{(function(){
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "b542733f5096473eb1f3784915fd044a"}'></script><!-- End Cloudflare Web Analytics -->
 <script src="assets/events.js" defer></script><script src="assets/analytics.js" defer></script></body>
 </html>
+
 
 
 
