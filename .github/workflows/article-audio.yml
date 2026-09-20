@@ -12,6 +12,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: article-audio-main
+  cancel-in-progress: false
+
 jobs:
   narrate:
     runs-on: ubuntu-latest
@@ -36,5 +40,8 @@ jobs:
             echo "No audio changes."
           else
             git commit -m "Add narrated article audio"
+            # A new article can be published while synthesis is running.
+            # Rebase the audio commit onto it instead of failing the whole run.
+            git pull --rebase origin main
             git push
           fi
