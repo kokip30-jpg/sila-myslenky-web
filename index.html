@@ -235,9 +235,9 @@ footer a{text-decoration:none}
   </div>
 </footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
 <script>
-(function(){
+window.addEventListener("load",()=>{(function(){
   let pulse = 0;
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -269,7 +269,7 @@ footer a{text-decoration:none}
   /* ---------- 3D scéna: rozbitý měsíc, který se skládá ---------- */
   const canvas = document.getElementById('scene');
   const renderer = new THREE.WebGLRenderer({canvas, antialias:true, alpha:true});
-  renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+  renderer.setPixelRatio(Math.min(devicePixelRatio, innerWidth <= 800 ? 1 : 1.5));
   renderer.outputEncoding = THREE.sRGBEncoding;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = .92;
@@ -399,7 +399,7 @@ footer a{text-decoration:none}
   const rim = new THREE.DirectionalLight(0x9fb2ff, 1.4); rim.position.set(5,-2,-4); scene.add(rim);
 
   // myšlenky – drobné částice
-  const pc = 900, pg = new THREE.BufferGeometry(), pp = new Float32Array(pc*3);
+  const pc = innerWidth <= 800 ? 260 : 700, pg = new THREE.BufferGeometry(), pp = new Float32Array(pc*3);
   for(let i=0;i<pc;i++){ const r=4+Math.random()*14, t=Math.random()*6.28, p=Math.acos(2*Math.random()-1);
     pp[i*3]=r*Math.sin(p)*Math.cos(t); pp[i*3+1]=r*Math.cos(p); pp[i*3+2]=r*Math.sin(p)*Math.sin(t)-6; }
   pg.setAttribute('position', new THREE.BufferAttribute(pp,3));
@@ -470,6 +470,7 @@ footer a{text-decoration:none}
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "b542733f5096473eb1f3784915fd044a"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
+
 
 
 
