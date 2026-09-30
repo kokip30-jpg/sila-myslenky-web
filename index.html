@@ -147,6 +147,49 @@ footer a{text-decoration:none}
   #scene{display:none}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}.mobile-heart{animation:none}}
+
+
+/* Moderní editoriální vrstva: méně hluku, jasnější orientace. */
+:root{--paper:color-mix(in srgb,var(--bg2) 78%,transparent);--soft-rose:color-mix(in srgb,var(--rose) 14%,transparent);--radius:28px}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.42;background:radial-gradient(circle at 12% 18%,color-mix(in srgb,var(--rose) 14%,transparent),transparent 26%),radial-gradient(circle at 82% 74%,color-mix(in srgb,var(--mauve) 30%,transparent),transparent 29%)}
+header{border-bottom-color:color-mix(in srgb,var(--line) 76%,transparent)}
+header .wrap{height:70px}
+.logo{font-size:26px;letter-spacing:.015em}
+nav{align-items:center;gap:7px;padding:5px;border:1px solid color-mix(in srgb,var(--line) 75%,transparent);border-radius:999px;background:color-mix(in srgb,var(--bg) 45%,transparent)}
+nav a{padding:7px 10px;border-radius:999px;transition:color .2s,background .2s}
+nav a:hover{background:var(--soft-rose)}
+nav .guide-nav{color:var(--ink);background:var(--soft-rose)}
+.hero{position:relative;min-height:calc(100svh - 70px);padding-block:clamp(54px,9vh,120px)}
+.hero::after{content:"";position:absolute;right:0;top:14%;width:min(41vw,480px);aspect-ratio:1;border:1px solid color-mix(in srgb,var(--rose) 30%,transparent);border-radius:50%;box-shadow:0 0 0 34px color-mix(in srgb,var(--rose) 5%,transparent),0 0 0 82px color-mix(in srgb,var(--rose) 3%,transparent);pointer-events:none;opacity:.68}
+.hero > *{position:relative;z-index:1}
+.kicker,.section-kicker{display:flex;align-items:center;gap:9px;color:var(--rose);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
+.kicker::before,.section-kicker::before{content:"";width:25px;height:1px;background:currentColor}
+.hero h1{max-width:8.8ch}
+.hero p{max-width:37ch;font-size:18px}
+.cta{gap:10px}
+.btn{padding:13px 21px;transition:transform .2s,background .2s,border-color .2s;box-shadow:0 8px 22px rgba(0,0,0,.07)}
+.btn:hover{transform:translateY(-2px);border-color:color-mix(in srgb,var(--rose) 65%,var(--line))}
+.btn.primary{box-shadow:0 11px 28px color-mix(in srgb,var(--rose) 19%,transparent)}
+.hero-meta{display:flex;flex-wrap:wrap;gap:18px;margin-top:28px;color:var(--muted);font-size:14px}
+.hero-meta span{display:flex;align-items:center;gap:7px}.hero-meta span::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--rose)}
+.guide{padding-top:clamp(42px,8vh,96px)}
+.guide-card{position:relative;overflow:hidden;max-width:900px;border-color:color-mix(in srgb,var(--rose) 34%,var(--line));background:linear-gradient(135deg,color-mix(in srgb,var(--bg2) 88%,var(--rose) 8%),var(--paper));box-shadow:0 28px 90px rgba(0,0,0,.2)}
+.guide-card::before{content:"";position:absolute;width:260px;height:260px;right:-110px;top:-145px;border-radius:50%;background:radial-gradient(circle,var(--soft-rose),transparent 70%);pointer-events:none}
+.guide-card > *{position:relative}
+.guide-card .section-kicker{justify-content:center;margin-bottom:16px}
+.guide-badges{display:flex;justify-content:center;gap:9px;flex-wrap:wrap;margin-top:22px}.guide-badges span{padding:6px 10px;border:1px solid var(--line);border-radius:999px;color:var(--muted);font-size:13px;background:color-mix(in srgb,var(--bg) 20%,transparent)}
+.guide-form{border:1px solid rgba(35,33,61,.08);box-shadow:0 12px 30px rgba(0,0,0,.13)}
+section{padding-block:clamp(78px,12vh,145px)}
+.moods{max-width:none;grid-template-columns:repeat(4,1fr);gap:12px}.mood{min-height:145px;background:linear-gradient(145deg,var(--glass),color-mix(in srgb,var(--bg2) 75%,transparent))}.mood:hover{border-color:color-mix(in srgb,var(--rose) 55%,var(--line));transform:translateY(-3px)}
+.path{padding-block:clamp(80px,12vh,140px);padding-inline:clamp(24px,5vw,64px);border:1px solid var(--line);border-radius:var(--radius);background:color-mix(in srgb,var(--paper) 72%,transparent)}
+.path ol{padding-top:9px}.path li{padding-bottom:25px}.path li:last-child{padding-bottom:0}
+.path-label{margin-bottom:18px;font-size:13px;color:var(--rose);font-weight:600;letter-spacing:.1em;text-transform:uppercase}
+.shelf{gap:56px 24px}.item{padding:24px 12px 18px;border-radius:22px;transition:background .25s}.item:hover{background:color-mix(in srgb,var(--paper) 60%,transparent)}
+.posts{margin-top:38px;border-top-color:color-mix(in srgb,var(--line) 75%,transparent)}.post{padding:28px 16px;border-radius:14px;transition:background .2s,padding .2s}.post:hover{background:var(--paper);padding-inline:22px}.post small{padding:5px 8px;border:1px solid var(--line);border-radius:999px}
+.quote{padding-block:clamp(100px,16vh,180px)}
+@media (max-width:800px){header .wrap{height:62px}.hero{min-height:100svh}.hero::after{display:none}.moods{grid-template-columns:repeat(2,1fr)}.mood{min-height:126px}.path{margin-inline:20px;width:auto}.hero-meta{gap:10px 16px}}
+@media (max-width:480px){.moods{grid-template-columns:1fr}.mood{min-height:0}.guide-card{border-radius:24px}.hero-meta{font-size:13px}}
+
 </style>
 <meta name="msvalidate.01" content="2061DEC4C7C23F079F486945C9E3084E">
 <script type="application/ld+json">{"name":"Síla myšlenky","sameAs":["https://www.instagram.com/sila_myslenky_/","https://www.facebook.com/profile.php?id=61565212696845"],"url":"https://sila-myslenky.com/","@type":"Organization","@context":"https://schema.org"}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-4T1H4JWKTB"></script>
@@ -171,6 +214,7 @@ footer a{text-decoration:none}
 
 <main id="top">
   <section class="hero wrap">
+    <div class="kicker">Místo, kde můžeš na chvíli zpomalit</div>
     <h1>Některé rány nejsou vidět.<span>A přesto bolí.</span></h1>
     <p>Prostor pro vztahy, rozchody, zklamání a nový začátek. Protože někdy stačí jedna věta, aby člověk věděl, že v tom není sám.</p>
     <div class="cta">
@@ -178,14 +222,16 @@ footer a{text-decoration:none}
       <a class="btn" href="#dnes">Jak ti je dnes?</a>
       <a class="btn" href="blog/">Začít číst</a>
     </div>
-
+    <div class="hero-meta" aria-label="Co na webu najdeš"><span>Čti vlastním tempem</span><span>Nový text každý den</span><span>Bez nátlaku</span></div>
   </section>
 
 
   <section id="pruvodce" class="guide wrap" aria-labelledby="pruvodce-title">
     <div class="guide-card">
+      <div class="section-kicker">Průvodce zdarma do e-mailu</div>
       <h2 id="pruvodce-title">7 dní po rozchodu</h2>
       <p class="lead">Jemný průvodce pro první dny, kdy se myšlenky vracejí rychleji, než by sis přál. Nech si ho poslat do e-mailu.</p>
+      <div class="guide-badges"><span>7 krátkých zastavení</span><span>PDF do e-mailu</span><span>Čti, kdy chceš</span></div>
       <div class="guide-form">
         <iframe title="Formulář pro zaslání průvodce 7 dní po rozchodu" loading="lazy" src="https://bcc1c40e.sibforms.com/v2/serve/MUIFAKypOM_BqPPCa5FwG9mgquXzdMpdByKkEEEJ6UQAGiDh7uUPfM9PE70-TNdRgoxNzhq880iyIlQXpDCwoJTDPgoDn_SRRAn2zAfi0Kk0rKVlUnoeGyNO_j7jGAh_tnob-ejqyJYbAdaQyKChLudKdXecB1VW1oNatvhtz53NZXwuQU_9z81PTEkgEH-LWSPh8RNB9A0kjL0eyg=="></iframe>
       </div>
@@ -209,7 +255,9 @@ footer a{text-decoration:none}
       <h2>Pustit a přijmout konec, den po dni.</h2>
       <p class="lead">Nemusíš projít všechno najednou. Vrať se každý den k jednomu textu a pokračuj tam, kde právě jsi.</p>
     </div>
-    <ol>
+    <div>
+      <div class="path-label">Začni tam, kde to teď nejvíc cítíš</div>
+      <ol>
       <li><span>Den 1</span><a href="https://sila-myslenky.com/blog/kdyz-vztah-skonci.html">Když vztah skončí</a></li>
       <li><span>Den 2</span><a href="https://sila-myslenky.com/blog/kdyz-rozum-vi-ze-to-skoncilo.html">Když rozum ví, ale tělo ne</a></li>
       <li><span>Den 3</span><a href="https://sila-myslenky.com/blog/kdyz-se-ti-po-rozchodu-nechce-vubec-nic.html">Když se ti nechce vůbec nic</a></li>
@@ -217,7 +265,8 @@ footer a{text-decoration:none}
       <li><span>Den 5</span><a href="https://sila-myslenky.com/blog/kdyz-te-prepadne-chut-napsat.html">Když chceš napsat</a></li>
       <li><span>Den 6</span><a href="https://sila-myslenky.com/blog/kdyz-porad-kontrolujes-jestli-se-ozval.html">Když kontroluješ telefon</a></li>
       <li><span>Den 7</span><a href="https://sila-myslenky.com/blog/kdyz-ti-po-rozchodu-zustavaji-hlavne-hezke-vzpominky.html">Když zůstávají hezké vzpomínky</a></li>
-    </ol>
+      </ol>
+    </div>
   </section>
 
   <section id="obchod" class="wrap">
