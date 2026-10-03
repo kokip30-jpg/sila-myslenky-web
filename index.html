@@ -38,7 +38,7 @@ header .wrap{display:flex;align-items:center;justify-content:space-between;heigh
 nav{display:flex;gap:26px;font-size:15px}
 nav a{text-decoration:none;color:var(--muted)}
 nav a:hover{color:var(--ink)}
-@media (max-width:700px){nav{gap:18px}nav a:not(.shop):not(.guide-nav){display:none}}
+@media (max-width:700px){nav{gap:18px}nav a:not(.shop):not(.guide-nav):not(.blog-nav){display:none}}
 
 .hero{min-height:calc(100svh - 64px);display:grid;align-content:center;padding-block:60px}
 .hero h1{font:400 clamp(52px,9.5vw,132px)/.92 Cormorant,Georgia,serif;letter-spacing:-.02em;max-width:9.5ch}
@@ -206,7 +206,7 @@ section{padding-block:clamp(78px,12vh,145px)}
       <a href="#dnes">Jak ti je</a>
       <a href="#cesta">Cesta na týden</a>
       <a class="guide-nav" href="#pruvodce">Průvodce</a>
-      <a href="blog/">Blog</a>
+      <a class="blog-nav" href="blog/">Blog</a>
       <a class="shop" href="#obchod">Obchod</a>
     </nav>
   </div>
