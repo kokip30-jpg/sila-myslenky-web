@@ -5,6 +5,11 @@
     add({rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..500;1,9..144,300..400&family=Figtree:wght@400;500;600&display=swap'});
     add({rel: 'stylesheet', href: new URL('clanek.css', document.currentScript?.src || location.href).href});
   }
+  if (!document.querySelector('script[src$="prehravac.js"]')) {
+    const s = document.createElement('script');
+    s.src = new URL('prehravac.js', document.currentScript?.src || location.href).href;
+    document.head.appendChild(s);
+  }
 })();
 
 (() => {

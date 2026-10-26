@@ -195,10 +195,11 @@ onScroll();
 
 const ease = x => x < .5 ? 2 * x * x : 1 - Math.pow(-2 * x + 2, 2) / 2;
 let lastWord = '';
+const { inhale: IN, exhale: OUT } = window.__breath || { inhale: 4, exhale: 6 };   // v noci 4 + 8 s
 function breath(t) {
-  const c = (t / 1000) % 10;                  // 4 s nádech, 6 s výdech
-  const inhale = c < 4;
-  const b = inhale ? ease(c / 4) : 1 - ease((c - 4) / 6);
+  const c = (t / 1000) % (IN + OUT);
+  const inhale = c < IN;
+  const b = inhale ? ease(c / IN) : 1 - ease((c - IN) / OUT);
   const word = inhale ? 'Nádech' : 'Výdech';
   if (word !== lastWord && breathWord) { breathWord.textContent = word; lastWord = word; }
   if (breathDot) breathDot.style.setProperty('--b', (.7 + b * .9).toFixed(3));

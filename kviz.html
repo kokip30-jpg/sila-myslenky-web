@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ve které fázi jsi? | Síla myšlenky</title>
+<meta name="description" content="Pět krátkých otázek, které ti pomůžou zjistit, kde teď po rozchodu jsi, a ukážou texty a kroky, které ti v téhle fázi můžou pomoct.">
+<link rel="canonical" href="https://sila-myslenky.com/kviz.html">
+<meta property="og:title" content="Ve které fázi jsi? | Síla myšlenky">
+<meta property="og:description" content="Pět krátkých otázek a cesta, která začíná tam, kde právě jsi.">
+<meta property="og:image" content="https://sila-myslenky.com/media/og-sila-myslenky-v1.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..500;1,9..144,300..400&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/clanek.css">
+<style>
+*{box-sizing:border-box}body{margin:0;min-height:100vh}
+.wrap{width:min(860px,calc(100% - 40px));margin:auto}
+.quiz{min-height:62vh;display:grid;align-items:center;padding-bottom:80px}
+.screen{animation:in .6s cubic-bezier(.2,.7,.2,1) both}
+@keyframes in{from{opacity:0;transform:translateY(16px)}}
+.dots{display:flex;gap:8px;margin-bottom:22px}
+.dots i{width:28px;height:4px;border-radius:4px;background:color-mix(in srgb,var(--ink) 14%,transparent);transition:background .4s}
+.dots i.on{background:var(--rose)}
+.q h2{font:300 clamp(30px,4.4vw,48px)/1.1 var(--serif);margin:.2em 0 .8em}
+.answers{display:grid;gap:10px}
+.answers button{all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:center;gap:14px;padding:18px 22px;border:1px solid var(--line);border-radius:18px;background:var(--paper);color:var(--ink);font:400 18px/1.4 var(--sans);transition:border-color .2s,transform .2s}
+.answers button::before{content:"";flex:0 0 12px;height:12px;border-radius:50%;border:1px solid var(--muted)}
+.answers button:hover,.answers button:focus-visible{border-color:var(--rose);transform:translateX(4px)}
+.answers button:focus-visible{outline:2px solid var(--rose);outline-offset:3px}
+.back-q{margin-top:22px;background:none;border:0;color:var(--muted);font:500 15px var(--sans);cursor:pointer;padding:8px 0}
+.intro h1{max-width:12ch}
+.intro .button{margin-top:10px}
+.small{font-size:14px;color:var(--muted);margin-top:16px}
+.outcome h1{max-width:14ch}
+.outcome .lead{max-width:34em}
+.outcome h3{font:600 12px/1.4 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--rose);margin:44px 0 14px}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+</style>
+</head>
+<body>
+<header><div class="wrap nav"><a class="brand" href="index.html">Síla myšlenky</a><a href="muj-prostor.html">Tvůj prostor →</a></div></header>
+<main class="wrap">
+  <section class="quiz" id="quiz" aria-live="polite">
+    <div class="screen intro">
+      <div class="eyebrow">Dvě minuty pro tebe</div>
+      <h1>Ve které fázi právě jsi?</h1>
+      <p class="lead">Pět krátkých otázek. Na konci uvidíš, kde teď nejspíš jsi, a texty a malé kroky, které ti v téhle fázi můžou pomoct.</p>
+      <button class="button" type="button" id="start">Začít →</button>
+      <p class="small">Odpovědi se nikam neodesílají. Výsledek si uložíš jen ve svém zařízení.</p>
+    </div>
+  </section>
+</main>
+<script>
+(() => {
+  const FAZE = {
+    ticho: {
+      n: 'Ticho po konci', e: 'Fáze 1',
+      t: 'Jsi na začátku. Všechno je ještě čerstvé a tělo se teprve učí, že je konec. Teď nepotřebuješ velký plán. Stačí něco, co tě podrží přes další den.',
+      a: [['Když vztah skončí: co dělat s tichem', 'blog/kdyz-vztah-skonci.html'], ['Když rozum ví, že to skončilo, ale tělo to ještě neví', 'blog/kdyz-rozum-vi-ze-to-skoncilo.html'], ['Když se ti po rozchodu nechce vůbec nic', 'blog/kdyz-se-ti-po-rozchodu-nechce-vubec-nic.html']],
+      tool: ['7 dní zpátky k sobě', 'Krátká minisérie na první týden.', 'sedm-dni.html'],
+      p: ['30 dní zpátky k sobě', 'Jeden srozumitelný krok denně pro první týdny.', 'produkty/30-dni-zpatky-k-sobe.html']
+    },
+    stesk: {
+      n: 'Stesk a chuť se ozvat', e: 'Fáze 2',
+      t: 'Nejtěžší teď nejsou celé dny, ale chvíle, kdy ruka sama sahá po telefonu. Je to normální. Hlava hledá úlevu tam, kde ji dřív našla. Nemusíš s tím bojovat sám, stačí získat pár minut odstupu.',
+      a: [['Když tě přepadne chuť napsat', 'blog/kdyz-te-prepadne-chut-napsat.html'], ['Když pořád kontroluješ, jestli se ozval', 'blog/kdyz-porad-kontrolujes-jestli-se-ozval.html'], ['Když se ti chce vrátit jen proto, aby skončila bolest', 'blog/kdyz-se-ti-chce-vratit-jen-aby-skoncila-bolest.html']],
+      tool: ['Napiš to sem, místo do zprávy', 'Napiš všechno a pak to nech rozplynout.', 'index.html#dopis'],
+      p: ['Když se život zlomí', 'Krátké kapitoly a konkrétní kroky pro období po rozchodu.', 'produkty/kdyz-se-zivot-zlomi.html']
+    },
+    jasno: {
+      n: 'Hledání jasna', e: 'Fáze 3',
+      t: 'Něco ti nesedí a ptáš se, jestli to nepřeháníš. Tvoje pochybnosti si zaslouží pozornost, ne odbytí. Pomůže, když si věci pojmenuješ černé na bílém.',
+      a: [['Jak poznat, že už nebojuješ za vztah, ale jen za jeho vzpomínku', 'blog/za-vztah-nebo-vzpominku.html'], ['Když si vyčítáš, že jsi neviděl signály', 'blog/kdyz-si-vycitas-ze-jsi-nevidel-signaly.html'], ['Hranice nejsou trest pro druhé', 'blog/hranice-nejsou-trest-pro-druhe.html']],
+      tool: ['Checklist: 15 znaků manipulace', 'Projdeš ho za pět minut, přijde ti e-mailem zdarma.', 'https://koki-p30.systeme.io/checklist'],
+      p: ['Není to v tvé hlavě', 'Jak poznat manipulaci a vrátit si důvěru v sebe. Deník jasnosti zdarma.', 'https://koki-p30.systeme.io/e-book?utm_source=sila-myslenky&utm_medium=kviz']
+    },
+    navrat: {
+      n: 'Návrat k sobě', e: 'Fáze 4',
+      t: 'Nejhorší bouře je za tebou a začínáš se ptát, kdo jsi teď. To je dobré místo pro malé kroky, které patří jen tobě, a pro trochu zvědavosti na to, co dál.',
+      a: [['První kroky zpět k sobě', 'blog/prvni-kroky-zpet-k-sobe.html'], ['Když si dovolíš začít znovu', 'blog/kdyz-si-dovolis-zacit-znovu.html'], ['Samota, která není prázdná', 'blog/samota-ktera-neni-prazdna.html']],
+      tool: ['Tvůj prostor', 'Denní check-in, kalendář nálad a tvoje nástroje.', 'muj-prostor.html'],
+      p: ['Mlčky jsi to nesla', 'Roční deník s 365 otázkami pro vlastní tempo.', 'produkty/mlcky-jsi-to-nesla.html']
+    }
+  };
+  // pořadí odpovědí je u každé otázky jiné, aby se nedal „uhodnout" vzorec
+  const Q = [
+    ['Jak dlouho to je?', [['Pár dní', 'ticho'], ['Ještě jsme spolu, ale něco nesedí', 'jasno'], ['Pár týdnů', 'stesk'], ['Měsíce nebo déle', 'navrat']]],
+    ['Co je teď nejtěžší?', [['Chuť ozvat se', 'stesk'], ['Prázdno a ticho', 'ticho'], ['Nevím, kdo jsem bez toho vztahu', 'navrat'], ['Pochybnosti, jestli to nepřeháním', 'jasno']]],
+    ['Jak vypadají tvoje večery?', [['Přehrávám si, co kdo řekl', 'jasno'], ['Učím se trávit čas se sebou', 'navrat'], ['Nemůžu usnout', 'ticho'], ['Kontroluju telefon', 'stesk']]],
+    ['Co by ti dnes nejvíc pomohlo?', [['Udělat první krok pro sebe', 'navrat'], ['Aby to tolik nebolelo', 'ticho'], ['Vidět věci jasně', 'jasno'], ['Vydržet a nenapsat', 'stesk']]],
+    ['Která věta ti teď nejvíc sedí?', [['„Nemusíš nic posílat."', 'stesk'], ['„Není to v tvé hlavě."', 'jasno'], ['„Tohle přejde, i když to tak nevypadá."', 'ticho'], ['„Máš právo začít znovu."', 'navrat']]]
+  ];
+  const box = document.getElementById('quiz');
+  const answers = [];
+  const esc = s => s.replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const track = (n, d) => window.trackAnalytics?.(n, d);
+
+  function show(html) {
+    box.innerHTML = `<div class="screen">${html}</div>`;
+    box.querySelector('h1,h2')?.focus?.();
+    scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  function question(i) {
+    const [title, opts] = Q[i];
+    show(`<div class="q">
+      <div class="dots" aria-hidden="true">${Q.map((_, k) => `<i class="${k <= i ? 'on' : ''}"></i>`).join('')}</div>
+      <div class="eyebrow">Otázka ${i + 1} z ${Q.length}</div>
+      <h2 tabindex="-1">${title}</h2>
+      <div class="answers" role="group" aria-label="${esc(title)}">${opts.map(([t, f]) => `<button type="button" data-f="${f}">${esc(t)}</button>`).join('')}</div>
+      ${i ? '<button class="back-q" type="button">← Předchozí otázka</button>' : ''}
+    </div>`);
+    box.querySelectorAll('[data-f]').forEach(b => b.addEventListener('click', () => {
+      answers[i] = b.dataset.f;
+      i + 1 < Q.length ? question(i + 1) : result();
+    }));
+    box.querySelector('.back-q')?.addEventListener('click', () => question(i - 1));
+  }
+  function result() {
+    const score = {};
+    answers.forEach(f => score[f] = (score[f] || 0) + 1);
+    const best = Math.max(...Object.values(score));
+    const tied = Object.keys(score).filter(k => score[k] === best);
+    const id = tied.includes(answers[1]) ? answers[1] : tied[0];   // při shodě rozhodne „co je nejtěžší"
+    const f = FAZE[id];
+    try { localStorage.setItem('sm-faze', JSON.stringify({ id, n: f.n, date: new Date().toISOString().slice(0, 10) })); } catch (e) {}
+    track('quiz_result', { faze: id });
+    const ext = u => u.startsWith('http') ? ' target="_blank" rel="noopener"' : '';
+    show(`<div class="outcome">
+      <div class="eyebrow">Tvoje fáze · ${f.e}</div>
+      <h1 tabindex="-1">${f.n}</h1>
+      <p class="lead">${f.t}</p>
+      <h3>Začni tady</h3>
+      <div class="tiles">${f.a.map(([t, u]) => `<a class="tile" href="${u}"><b>${t}</b><em>Číst →</em></a>`).join('')}</div>
+      <h3>Malý krok a průvodce</h3>
+      <div class="tiles">
+        <a class="tile" href="${f.tool[2]}"${ext(f.tool[2])}><b>${f.tool[0]}</b><span>${f.tool[1]}</span><em>Otevřít →</em></a>
+        <a class="tile" href="${f.p[2]}"${ext(f.p[2])}><b>${f.p[0]}</b><span>${f.p[1]}</span><em>Průvodce →</em></a>
+      </div>
+      <div class="actions">
+        <a class="button" href="muj-prostor.html">Uloženo v Tvém prostoru →</a>
+        <button class="button ghost" type="button" id="again">Projít znovu</button>
+      </div>
+      <p class="small">Tohle není diagnóza. Jen orientace, kde začít. Fáze se navíc mění a klidně se prolínají.</p>
+    </div>`);
+    document.getElementById('again').addEventListener('click', () => { answers.length = 0; question(0); });
+  }
+  document.getElementById('start').addEventListener('click', () => { track('quiz_start', {}); question(0); });
+})();
+</script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"b542733f5096473eb1f3784915fd044a"}'></script>
+<script src="assets/events.js" defer></script><script src="assets/analytics.js" defer></script>
+</body>
+</html>

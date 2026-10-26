@@ -1,0 +1,67 @@
+{
+  "_poznamka": "Seznamy pro přehrávač na úvodní stránce. Přidávej jen články, ke kterým existuje MP3 ve složce audio/.",
+  "nejnovejsi": [
+    {
+      "t": "Když se ti nechce věřit vlastnímu rozhodnutí",
+      "u": "blog/kdyz-se-ti-nechce-verit-vlastnimu-rozhodnuti.html",
+      "a": "audio/kdyz-se-ti-nechce-verit-vlastnimu-rozhodnuti.mp3"
+    },
+    {
+      "t": "Když se za sebe postavíš a stejně se bojíš",
+      "u": "blog/kdyz-se-za-sebe-postavis-a-stejne-se-bojis.html",
+      "a": "audio/kdyz-se-za-sebe-postavis-a-stejne-se-bojis.mp3"
+    },
+    {
+      "t": "Když tě cizí nesouhlas rozhodí",
+      "u": "blog/kdyz-te-cizi-nesouhlas-rozhodi.html",
+      "a": "audio/kdyz-te-cizi-nesouhlas-rozhodi.mp3"
+    },
+    {
+      "t": "Hranice nejsou trest pro druhé",
+      "u": "blog/hranice-nejsou-trest-pro-druhe.html",
+      "a": "audio/hranice-nejsou-trest-pro-druhe.mp3"
+    },
+    {
+      "t": "Když ticho začne být snesitelnější",
+      "u": "blog/kdyz-ticho-zacne-byt-snesitelnejsi.html",
+      "a": "audio/kdyz-ticho-zacne-byt-snesitelnejsi.mp3"
+    },
+    {
+      "t": "Když tě přestane bavit být silný",
+      "u": "blog/kdyz-te-prestane-bavit-byt-silny.html",
+      "a": "audio/kdyz-te-prestane-bavit-byt-silny.mp3"
+    }
+  ],
+  "na-noc": [
+    {
+      "t": "Když ticho začne být snesitelnější",
+      "u": "blog/kdyz-ticho-zacne-byt-snesitelnejsi.html",
+      "a": "audio/kdyz-ticho-zacne-byt-snesitelnejsi.mp3"
+    },
+    {
+      "t": "Když po vzpomínce přijde ticho",
+      "u": "blog/kdyz-po-vzpomince-prijde-ticho.html",
+      "a": "audio/kdyz-po-vzpomince-prijde-ticho.mp3"
+    },
+    {
+      "t": "Když se smutek nevejde do dne",
+      "u": "blog/kdyz-se-smutek-nevejde-do-dne.html",
+      "a": "audio/kdyz-se-smutek-nevejde-do-dne.mp3"
+    },
+    {
+      "t": "Když tě unaví pořád něco cítit",
+      "u": "blog/kdyz-te-unavi-porad-neco-citit.html",
+      "a": "audio/kdyz-te-unavi-porad-neco-citit.mp3"
+    },
+    {
+      "t": "Když se smutek ozve cestou domů",
+      "u": "blog/kdyz-se-smutek-ozve-cestou-domu.html",
+      "a": "audio/kdyz-se-smutek-ozve-cestou-domu.mp3"
+    },
+    {
+      "t": "Neděle, kdy se ti vrací minulost",
+      "u": "blog/nedele-kdy-se-ti-vraci-minulost.html",
+      "a": "audio/nedele-kdy-se-ti-vraci-minulost.mp3"
+    }
+  ]
+}

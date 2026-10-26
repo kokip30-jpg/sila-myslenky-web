@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tvůj prostor | Síla myšlenky</title>
+<meta name="description" content="Malé místo jen pro tebe: denní check-in, kalendář nálad a nástroje pro dny po rozchodu. Všechno zůstává jen ve tvém zařízení.">
+<link rel="canonical" href="https://sila-myslenky.com/muj-prostor.html">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..500;1,9..144,300..400&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/clanek.css">
+<style>
+*{box-sizing:border-box}body{margin:0}
+.wrap{width:min(980px,calc(100% - 40px));margin:auto}
+main{padding-top:0}
+.grid2{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:16px;align-items:start}
+.checkin h2,.cal h2{font:300 clamp(26px,3vw,34px)/1.15 var(--serif);margin:0 0 16px}
+.moods{display:flex;flex-wrap:wrap;gap:8px}
+.mood{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;gap:9px;padding:11px 16px;border:1px solid var(--line);border-radius:999px;background:var(--paper);color:var(--ink);font:500 15px/1 var(--sans);transition:border-color .2s,transform .2s}
+.mood i{width:12px;height:12px;border-radius:50%;background:var(--c)}
+.mood:hover{transform:translateY(-1px);border-color:var(--c)}
+.mood[aria-pressed="true"]{border-color:var(--c);box-shadow:0 0 0 3px color-mix(in srgb,var(--c) 25%,transparent)}
+.mood:focus-visible{outline:2px solid var(--rose);outline-offset:3px}
+.reply{min-height:3.2em;margin:18px 0 0;font:italic 300 20px/1.45 var(--serif);color:var(--ink)}
+.reply a{display:inline-block;margin-top:6px;font:500 15px var(--sans);font-style:normal;color:var(--rose)}
+.cal-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}
+.cal-head h2{margin:0}
+.cal-head button{border:1px solid var(--line);background:transparent;color:var(--ink);width:38px;height:38px;border-radius:50%;cursor:pointer;font-size:16px}
+.cal-head button:hover{border-color:var(--rose)}
+.days{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;text-align:center}
+.days .dn{font:600 11px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding-bottom:4px}
+.day{aspect-ratio:1;border-radius:50%;display:grid;place-items:center;font:500 13px/1 var(--sans);color:var(--muted);position:relative}
+.day.has{background:var(--c);color:#23213D}
+.day.today{box-shadow:0 0 0 2px var(--rose)}
+.legend{display:flex;flex-wrap:wrap;gap:12px;margin-top:14px;font-size:13px;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:6px}.legend i{width:9px;height:9px;border-radius:50%;background:var(--c)}
+.stats{margin-top:12px;font-size:14px;color:var(--muted)}
+.section-title{font:600 12px/1.4 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--rose);margin:48px 0 14px}
+.privacy{margin:48px 0 80px;font-size:14px;color:var(--muted)}
+.privacy button{background:none;border:0;color:var(--rose);font:500 14px var(--sans);cursor:pointer;text-decoration:underline;padding:0}
+@media(max-width:760px){.grid2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><div class="wrap nav"><a class="brand" href="index.html">Síla myšlenky</a><a href="blog/">Číst blog →</a></div></header>
+<main class="wrap">
+  <section class="page-head">
+    <div class="eyebrow">Tvůj prostor</div>
+    <h1>Malé místo jen pro tebe.</h1>
+    <p>Jedno ťuknutí denně a postupně uvidíš, jak se tvoje dny mění. Všechno, co tu označíš, zůstává jen v tomto zařízení.</p>
+  </section>
+
+  <div class="grid2">
+    <section class="panel checkin" aria-labelledby="checkin-title">
+      <h2 id="checkin-title">Jak ti je dnes?</h2>
+      <div class="moods" role="group" aria-label="Jak ti je dnes" id="moods"></div>
+      <p class="reply" id="reply" aria-live="polite"></p>
+    </section>
+    <section class="panel cal" aria-labelledby="cal-title">
+      <div class="cal-head">
+        <button type="button" id="prev" aria-label="Předchozí měsíc">←</button>
+        <h2 id="cal-title"></h2>
+        <button type="button" id="next" aria-label="Další měsíc">→</button>
+      </div>
+      <div class="days" id="days"></div>
+      <div class="legend" id="legend"></div>
+      <p class="stats" id="stats"></p>
+    </section>
+  </div>
+
+  <div class="section-title">Pro tebe teď</div>
+  <div class="tiles" id="foryou"></div>
+
+  <div class="section-title">Tvoje nástroje</div>
+  <div class="tiles">
+    <a class="tile" href="vecerni-zapis.html"><b>Večerní zápis</b><span>Tři krátké otázky na konec dne.</span><em>Otevřít →</em></a>
+    <a class="tile" href="male-kroky.html"><b>Moje malé kroky</b><span>Jedna věc, která ti dnes uleví.</span><em>Otevřít →</em></a>
+    <a class="tile" href="index.html#dopis"><b>Napiš to sem</b><span>Místo zprávy, kterou bys pak litoval(a).</span><em>Otevřít →</em></a>
+    <a class="tile" href="dnesni-veta.html"><b>Dnešní věta</b><span>Jedna myšlenka na dnešek.</span><em>Otevřít →</em></a>
+    <a class="tile" href="ulozene.html"><b>Uložené články</b><span id="saved-count">Texty, ke kterým se chceš vrátit.</span><em>Otevřít →</em></a>
+    <a class="tile" href="sedm-dni.html"><b>7 dní zpátky k sobě</b><span>Krátká minisérie na první týden.</span><em>Začít →</em></a>
+    <a class="tile" href="hledat.html"><b>Hledat</b><span>Napiš, co tě trápí, a najdi text.</span><em>Hledat →</em></a>
+  </div>
+
+  <p class="privacy">Data ukládá jen tvůj prohlížeč. Nikam se neodesílají a nikdo jiný je nevidí. <button type="button" id="wipe">Smazat moje nálady a výsledek kvízu</button></p>
+</main>
+<script>
+(() => {
+  const MOODS = [
+    { id: 'tezko', n: 'Těžko', c: '#8C77A0', r: 'Dnes je to těžké. Nemusíš nic zvládnout, stačí přežít dnešek co nejlaskavěji.', l: ['Když se ti po rozchodu nechce vůbec nic', 'blog/kdyz-se-ti-po-rozchodu-nechce-vubec-nic.html'] },
+    { id: 'smutno', n: 'Smutno', c: '#9FB2F0', r: 'Smutek není chyba. Je to láska, která zrovna nemá kam jít.', l: ['Když se smutek nevejde do dne', 'blog/kdyz-se-smutek-nevejde-do-dne.html'] },
+    { id: 'neklid', n: 'Neklidně', c: '#E3A866', r: 'Když je v tobě neklid, pomůže zpomalit dech. Zkus pár nádechů s koulí na úvodní stránce.', l: ['Když tě přepadne chuť napsat', 'blog/kdyz-te-prepadne-chut-napsat.html'] },
+    { id: 'klidneji', n: 'Klidněji', c: '#E8B4B8', r: 'Klidnější den je malé vítězství. Všimni si, co ti dnes pomohlo.', l: ['Když ticho začne být snesitelnější', 'blog/kdyz-ticho-zacne-byt-snesitelnejsi.html'] },
+    { id: 'dobre', n: 'Dobře', c: '#E8C66E', r: 'Je dobře, že je dobře. Nemusíš se za to cítit provinile ani to hned vysvětlovat.', l: ['Když si dovolíš začít znovu', 'blog/kdyz-si-dovolis-zacit-znovu.html'] }
+  ];
+  const byId = Object.fromEntries(MOODS.map(m => [m.id, m]));
+  const KEY = 'sm-nalady';
+  const read = (k, d) => { try { return JSON.parse(localStorage.getItem(k)) ?? d; } catch (e) { return d; } };
+  const write = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} };
+  const iso = d => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+  const today = iso(new Date());
+  let data = read(KEY, {});
+  let view = new Date(); view.setDate(1);
+
+  /* check-in */
+  const moodsEl = document.getElementById('moods'), reply = document.getElementById('reply');
+  moodsEl.innerHTML = MOODS.map(m => `<button class="mood" type="button" data-id="${m.id}" style="--c:${m.c}" aria-pressed="false"><i></i>${m.n}</button>`).join('');
+  function showReply(id) {
+    const m = byId[id];
+    moodsEl.querySelectorAll('.mood').forEach(b => b.setAttribute('aria-pressed', b.dataset.id === id));
+    reply.innerHTML = m ? `${m.r}<br><a href="${m.l[1]}">Číst: ${m.l[0]} →</a>` : '';
+  }
+  moodsEl.addEventListener('click', e => {
+    const b = e.target.closest('.mood'); if (!b) return;
+    data[today] = b.dataset.id; write(KEY, data);
+    showReply(b.dataset.id); view = new Date(); view.setDate(1); renderCal();
+    window.trackAnalytics?.('mood_checkin', { mood: b.dataset.id });
+  });
+  showReply(data[today]);
+
+  /* kalendář */
+  const MONTHS = ['leden', 'únor', 'březen', 'duben', 'květen', 'červen', 'červenec', 'srpen', 'září', 'říjen', 'listopad', 'prosinec'];
+  function streak() {
+    let n = 0; const d = new Date();
+    if (!data[iso(d)]) d.setDate(d.getDate() - 1);
+    while (data[iso(d)]) { n++; d.setDate(d.getDate() - 1); }
+    return n;
+  }
+  function renderCal() {
+    const y = view.getFullYear(), m = view.getMonth();
+    document.getElementById('cal-title').textContent = `${MONTHS[m][0].toUpperCase() + MONTHS[m].slice(1)} ${y}`;
+    const first = (new Date(y, m, 1).getDay() + 6) % 7, len = new Date(y, m + 1, 0).getDate();
+    let html = ['Po', 'Út', 'St', 'Čt', 'Pá', 'So', 'Ne'].map(d => `<span class="dn">${d}</span>`).join('') + '<span></span>'.repeat(first);
+    let count = 0; const freq = {};
+    for (let d = 1; d <= len; d++) {
+      const key = iso(new Date(y, m, d)), mood = byId[data[key]];
+      if (mood) { count++; freq[mood.id] = (freq[mood.id] || 0) + 1; }
+      html += `<span class="day${mood ? ' has' : ''}${key === today ? ' today' : ''}"${mood ? ` style="--c:${mood.c}" title="${d}. ${mood.n}"` : ''}>${d}</span>`;
+    }
+    document.getElementById('days').innerHTML = html;
+    const top = Object.entries(freq).sort((a, b) => b[1] - a[1])[0];
+    const s = streak();
+    document.getElementById('stats').textContent = count
+      ? `Zaznamenané dny: ${count}${top ? ` · nejčastěji ${byId[top[0]].n.toLowerCase()}` : ''}${s > 1 ? ` · ${s} dní za sebou` : ''}`
+      : 'Tenhle měsíc zatím bez záznamu. Stačí jedno ťuknutí vlevo.';
+    document.getElementById('next').disabled = y === new Date().getFullYear() && m === new Date().getMonth();
+  }
+  document.getElementById('legend').innerHTML = MOODS.map(m => `<span style="--c:${m.c}"><i></i>${m.n}</span>`).join('');
+  document.getElementById('prev').addEventListener('click', () => { view.setMonth(view.getMonth() - 1); renderCal(); });
+  document.getElementById('next').addEventListener('click', () => { view.setMonth(view.getMonth() + 1); renderCal(); });
+  renderCal();
+
+  /* pro tebe teď: fáze z kvízu, rozečtený článek */
+  const faze = read('sm-faze', null), last = read('sm-last-article', null), saved = read('sm-saved', []);
+  const tiles = [];
+  tiles.push(faze
+    ? `<a class="tile" href="kviz.html"><b>${faze.n}</b><span>Tvoje fáze podle kvízu. Fáze se mění, klidně si ho projdi znovu.</span><em>Tvoje fáze →</em></a>`
+    : `<a class="tile" href="kviz.html"><b>Ve které fázi jsi?</b><span>Pět otázek a cesta, která začíná tam, kde právě jsi.</span><em>Spustit kvíz →</em></a>`);
+  if (last?.url) tiles.push(`<a class="tile" href="${last.url}"><b>${last.title}</b><span>Naposledy jsi četl(a) tenhle text.</span><em>Pokračovat →</em></a>`);
+  tiles.push('<a class="tile" href="index.html#dech"><b>Minuta dechu</b><span>Nádech na čtyři, výdech na šest. Spolu s koulí na úvodní stránce.</span><em>Nadechnout se →</em></a>');
+  document.getElementById('foryou').innerHTML = tiles.join('');
+  if (saved.length) document.getElementById('saved-count').textContent = `Máš uložené texty: ${saved.length}.`;
+
+  document.getElementById('wipe').addEventListener('click', () => {
+    if (!confirm('Opravdu smazat všechny zaznamenané nálady a výsledek kvízu? Nejde to vrátit.')) return;
+    try { localStorage.removeItem(KEY); localStorage.removeItem('sm-faze'); } catch (e) {}
+    location.reload();
+  });
+})();
+</script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"b542733f5096473eb1f3784915fd044a"}'></script>
+<script src="assets/events.js" defer></script><script src="assets/analytics.js" defer></script>
+</body>
+</html>
