@@ -1,5 +1,5 @@
 {
-  "_poznamka": "Seznamy pro přehrávač na úvodní stránce. Přidávej jen články, ke kterým existuje MP3 ve složce audio/.",
+  "_poznamka": "Automaticky sestaveno z článků, ke kterým existuje MP3 v audio/.",
   "nejnovejsi": [
     {
       "t": "Když se ti nechce věřit vlastnímu rozhodnutí",
@@ -39,19 +39,9 @@
       "a": "audio/kdyz-ticho-zacne-byt-snesitelnejsi.mp3"
     },
     {
-      "t": "Když po vzpomínce přijde ticho",
-      "u": "blog/kdyz-po-vzpomince-prijde-ticho.html",
-      "a": "audio/kdyz-po-vzpomince-prijde-ticho.mp3"
-    },
-    {
-      "t": "Když se smutek nevejde do dne",
-      "u": "blog/kdyz-se-smutek-nevejde-do-dne.html",
-      "a": "audio/kdyz-se-smutek-nevejde-do-dne.mp3"
-    },
-    {
-      "t": "Když tě unaví pořád něco cítit",
-      "u": "blog/kdyz-te-unavi-porad-neco-citit.html",
-      "a": "audio/kdyz-te-unavi-porad-neco-citit.mp3"
+      "t": "Když po hněvu přijde únava",
+      "u": "blog/hned-po-hnevu-prichazi-unava.html",
+      "a": "audio/hned-po-hnevu-prichazi-unava.mp3"
     },
     {
       "t": "Když se smutek ozve cestou domů",
@@ -59,9 +49,19 @@
       "a": "audio/kdyz-se-smutek-ozve-cestou-domu.mp3"
     },
     {
-      "t": "Neděle, kdy se ti vrací minulost",
-      "u": "blog/nedele-kdy-se-ti-vraci-minulost.html",
-      "a": "audio/nedele-kdy-se-ti-vraci-minulost.mp3"
+      "t": "Když se smutek nevejde do dne",
+      "u": "blog/kdyz-se-smutek-nevejde-do-dne.html",
+      "a": "audio/kdyz-se-smutek-nevejde-do-dne.mp3"
+    },
+    {
+      "t": "Když se smutek ozve při obyčejné věci",
+      "u": "blog/kdyz-se-smutek-ozve-pri-obycejne-veci.html",
+      "a": "audio/kdyz-se-smutek-ozve-pri-obycejne-veci.mp3"
+    },
+    {
+      "t": "Když po vzpomínce přijde ticho",
+      "u": "blog/kdyz-po-vzpomince-prijde-ticho.html",
+      "a": "audio/kdyz-po-vzpomince-prijde-ticho.mp3"
     }
   ]
 }
