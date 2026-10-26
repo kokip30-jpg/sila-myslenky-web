@@ -1,0 +1,86 @@
+/* Síla myšlenky: společný vzhled článků a blogu.
+   Načítá se až za vloženým <style> každého článku, takže přebíjí starší šablony
+   (černé pozadí, neonová růžová, Arial) a sjednocuje je s úvodní stránkou. */
+:root{
+  --serif:Fraunces,Georgia,serif; --sans:Figtree,"Segoe UI",system-ui,sans-serif;
+  --bg:#1C1B33; --bg2:#26233F; --ink:#F3E9E2; --text:#E6DCE2; --muted:#B4ADC6; --rose:#E8B4B8; --on-rose:#23213D;
+  --gold:#e8c66e; --line:rgba(243,233,226,.14); --paper:rgba(38,35,63,.62);
+  color-scheme:dark;
+}
+@media (prefers-color-scheme: light){
+  :root:not([data-theme="dark"]){--bg:#EFE7EE;--bg2:#E4D9E4;--ink:#23213D;--text:#36334F;--muted:#5E587A;--rose:#9C4A57;--on-rose:#FFFFFF;--gold:#b48a2c;--line:rgba(35,33,61,.14);--paper:rgba(255,255,255,.55);color-scheme:light}
+}
+:root[data-theme="dark"]{--bg:#1C1B33;--bg2:#26233F;--ink:#F3E9E2;--text:#E6DCE2;--muted:#B4ADC6;--rose:#E8B4B8;--on-rose:#23213D;--gold:#e8c66e;--line:rgba(243,233,226,.14);--paper:rgba(38,35,63,.62)}
+
+body{background:radial-gradient(120% 70% at 75% 0%,var(--bg2),var(--bg) 60%) fixed,var(--bg);color:var(--ink);font:400 18px/1.75 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--rose);outline-offset:4px;border-radius:4px}
+
+/* hlavička */
+header{position:sticky;top:0;z-index:5;padding:0;background:color-mix(in srgb,var(--bg) 72%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+header .wrap{min-height:68px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{font:400 24px/1 var(--serif);font-weight:400;text-decoration:none;color:var(--ink)}
+.brand b{font-weight:inherit;color:inherit}
+header a:not(.brand),.back{color:var(--muted);font:500 15px/1.4 var(--sans);text-decoration:none}
+header a:not(.brand):hover,.back:hover{color:var(--rose)}
+
+/* typografie článku */
+main{padding:clamp(56px,9vh,96px) 0}
+h1{font:300 clamp(40px,6.4vw,72px)/1.02 var(--serif);font-variation-settings:"opsz" 144;letter-spacing:-.02em;color:var(--ink);margin:14px 0 26px;text-wrap:balance}
+h2{font:400 clamp(26px,3.2vw,34px)/1.15 var(--serif);letter-spacing:-.01em;color:var(--ink);margin:2.6em 0 .55em}
+p{color:var(--text);font-size:1.04rem}
+article p a,.lead a{color:var(--rose);text-decoration-thickness:1px;text-underline-offset:3px}
+.eyebrow,.tag{display:flex;align-items:center;gap:9px;color:var(--rose);font:600 12px/1.4 var(--sans);letter-spacing:.14em;text-transform:uppercase}
+.eyebrow::before,.tag::before{content:"";width:25px;height:1px;background:currentColor}
+.date,.article-date,.sm-meta,time{color:var(--muted);font:400 14px/1.5 var(--sans)}
+.lead{border-left:1px solid var(--gold);padding-left:1.2rem;color:var(--ink);font:italic 300 clamp(20px,2.2vw,24px)/1.5 var(--serif)}
+.quote{border-left:1px solid var(--gold);padding:6px 0 6px 22px;margin:2.2em 0;color:var(--ink);font:italic 300 clamp(22px,2.6vw,28px)/1.4 var(--serif)}
+.article-cover{border-radius:22px}
+
+/* karty: tip, kontakt, reflexe, sdílení */
+.note,.contact,.micro-step,.reflection,.share,.share-box,.article-audio,.sm-checklist-box,
+article aside[style],article section[style],main > section[style]{
+  background:var(--paper)!important;border:1px solid var(--line)!important;border-radius:20px!important;color:var(--ink)!important;
+  font-family:var(--sans)!important;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.note b,.contact strong,.micro-step b{color:var(--rose)}
+.reflection h2,.share-box h2,.contact strong{font-family:var(--serif)}
+.reflection a,.contact a{color:var(--rose);border-bottom:1px solid currentColor;text-decoration:none}
+[style*="#ff4f9a"]{color:var(--rose)!important}
+main > section[style] h2{font-family:var(--serif)!important}
+
+/* tlačítka */
+.share button,.share-actions a,.share-actions button,.article-tools button{
+  border:1px solid var(--line);border-radius:999px;background:var(--paper);color:var(--ink);padding:10px 16px;font:600 14px/1 var(--sans);cursor:pointer;text-decoration:none;transition:border-color .2s,transform .2s}
+.share button:hover,.share-actions a:hover,.share-actions button:hover,.article-tools button:hover{border-color:var(--rose);color:var(--ink);transform:translateY(-1px)}
+.share button:first-of-type{background:var(--rose);color:var(--on-rose);border-color:transparent}
+.share span{color:var(--ink)}
+.share small{color:var(--muted)}
+
+/* navazující čtení */
+.related{border-top:1px solid var(--line)}
+.related a{color:var(--ink);font:400 20px/1.35 var(--serif);text-decoration:none}
+.related a:hover{color:var(--rose)}
+.related-links a{border:1px solid var(--line);border-radius:14px;background:var(--paper)}
+.related-links a:hover{border-color:var(--rose)}
+.related-links span{color:var(--rose)}
+.back{display:inline-block;margin-top:38px}
+
+/* poslech */
+.article-audio strong{font:600 14px/1.4 var(--sans);color:var(--ink)}
+.article-audio audio{width:100%;color-scheme:inherit}
+
+/* checklist box vkládaný přes checklist-box.js */
+.sm-checklist-kicker{color:var(--rose)!important;font-family:var(--sans)!important}
+.sm-checklist-title{color:var(--ink)!important;font:400 1.6rem/1.2 var(--serif)!important}
+.sm-checklist-text{color:var(--text)!important}
+.sm-checklist-btn{background:var(--rose)!important;color:var(--on-rose)!important;font:600 .95rem var(--sans)!important}
+
+/* výpis blogu (blog/index.html) */
+.hero h1{max-width:16ch}
+.filter{border:1px solid var(--line);background:var(--paper);color:var(--ink);font:600 14px/1 var(--sans)}
+.filter.active,.filter:hover{border-color:var(--rose);background:color-mix(in srgb,var(--rose) 14%,transparent)}
+.card{background:var(--paper);border-color:var(--line)}
+.card:hover{border-color:var(--rose)}
+.card h2{font:400 clamp(24px,3.4vw,30px)/1.15 var(--serif);margin:6px 0 8px}
+.card p{color:var(--muted)}
+.pager button{background:var(--paper);border-color:var(--line);color:var(--ink);font-family:var(--sans)}

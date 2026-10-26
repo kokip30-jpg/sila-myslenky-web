@@ -1,4 +1,13 @@
 (() => {
+  // Pojistka pro nové články ze starší šablony: doplní společný vzhled, když v hlavičce chybí.
+  if (!document.querySelector('link[href$="clanek.css"]')) {
+    const add = (attrs) => document.head.appendChild(Object.assign(document.createElement('link'), attrs));
+    add({rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..500;1,9..144,300..400&family=Figtree:wght@400;500;600&display=swap'});
+    add({rel: 'stylesheet', href: new URL('clanek.css', document.currentScript?.src || location.href).href});
+  }
+})();
+
+(() => {
   const article = document.querySelector('main article');
   if (!article || article.querySelector('.sm-checklist-box')) return;
   const category = article.querySelector('.eyebrow, .tag')?.textContent?.trim().toLocaleUpperCase('cs') || '';

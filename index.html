@@ -6,47 +6,41 @@
 <title>Síla myšlenky | Texty pro rozchody, vztahy a návrat k sobě</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;1,400;1,500&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<meta name="description" content="Texty pro rozchody, vztahy a návrat k sobě. Když je toho moc, najdeš tu klidné čtení, malé kroky pro dnešek a průvodce, ke kterým se můžeš vracet.">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..500;1,9..144,300..400&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#1C1B33; --bg2:#26233F; --ink:#F3E9E2; --muted:#B4ADC6; --rose:#E8B4B8; --mauve:#6E5A80; --line:rgba(243,233,226,.14);
+  --serif:Fraunces,Georgia,serif; --sans:Figtree,"Segoe UI",system-ui,sans-serif;
+  --bg:#1C1B33; --bg2:#26233F; --ink:#F3E9E2; --muted:#B4ADC6; --rose:#E8B4B8; --on-rose:#23213D; --mauve:#6E5A80; --line:rgba(243,233,226,.14);
   --glass:rgba(38,35,63,.55);
   box-sizing:border-box;
   padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
   color-scheme:dark;
 }
 @media (prefers-color-scheme: light){
-  :root:not([data-theme="dark"]){--bg:#EFE7EE;--bg2:#E4D9E4;--ink:#23213D;--muted:#5E587A;--rose:#B5646E;--mauve:#8C77A0;--line:rgba(35,33,61,.14);--glass:rgba(255,255,255,.55);color-scheme:light}
+  :root:not([data-theme="dark"]){--bg:#EFE7EE;--bg2:#E4D9E4;--ink:#23213D;--muted:#5E587A;--rose:#9C4A57;--on-rose:#FFFFFF;--mauve:#8C77A0;--line:rgba(35,33,61,.14);--glass:rgba(255,255,255,.55);color-scheme:light}
 }
-:root[data-theme="dark"]{--bg:#1C1B33;--bg2:#26233F;--ink:#F3E9E2;--muted:#B4ADC6;--rose:#E8B4B8;--mauve:#6E5A80;--line:rgba(243,233,226,.14);--glass:rgba(38,35,63,.55)}
+:root[data-theme="dark"]{--bg:#1C1B33;--bg2:#26233F;--ink:#F3E9E2;--muted:#B4ADC6;--rose:#E8B4B8;--on-rose:#23213D;--mauve:#6E5A80;--line:rgba(243,233,226,.14);--glass:rgba(38,35,63,.55)}
 *,*::before,*::after{box-sizing:inherit;margin:0}
 html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
-body{background:radial-gradient(120% 80% at 70% 0%,var(--bg2),var(--bg) 60%) fixed,var(--bg);color:var(--ink);font:400 17px/1.6 Figtree,"Segoe UI",system-ui,sans-serif;overflow-x:hidden}
+body{background:radial-gradient(120% 80% at 70% 0%,var(--bg2),var(--bg) 60%) fixed,var(--bg);color:var(--ink);font:400 17px/1.6 var(--sans);overflow-x:clip}
 a{color:inherit}
 :focus-visible{outline:2px solid var(--rose);outline-offset:4px;border-radius:4px}
-#scene{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
 main,header,footer{position:relative;z-index:1}
-.scrim{position:fixed;inset:0;z-index:0;pointer-events:none;background:linear-gradient(90deg,var(--bg) 0%,color-mix(in srgb,var(--bg) 80%,transparent) 38%,transparent 68%)}
-@media (max-width:800px){.scrim{background:linear-gradient(180deg,transparent 0%,transparent 30%,color-mix(in srgb,var(--bg) 82%,transparent) 52%,var(--bg) 75%)}}
-main h1,main h2,main p,main blockquote,.answer{text-shadow:0 2px 18px var(--bg),0 0 40px var(--bg)}
-.serif{font-family:Cormorant,Georgia,serif}
+.serif{font-family:var(--serif)}
 .wrap{width:min(1120px,100% - 40px);margin-inline:auto}
 
 header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:color-mix(in srgb,var(--bg) 55%,transparent);border-bottom:1px solid var(--line)}
 header .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
-.logo{font:500 24px/1 Cormorant,Georgia,serif;text-decoration:none;letter-spacing:.01em}
+.logo{font:500 24px/1 var(--serif);text-decoration:none;letter-spacing:.01em}
 nav{display:flex;gap:26px;font-size:15px}
 nav a{text-decoration:none;color:var(--muted)}
 nav a:hover{color:var(--ink)}
 @media (max-width:700px){nav{gap:18px}nav a:not(.shop):not(.guide-nav):not(.blog-nav){display:none}}
 
-.hero{min-height:calc(100svh - 64px);display:grid;align-content:center;padding-block:60px}
-.hero h1{font:400 clamp(52px,9.5vw,132px)/.92 Cormorant,Georgia,serif;letter-spacing:-.02em;max-width:9.5ch}
-.hero h1 span{display:block;font-style:italic;color:var(--muted);font-size:.62em;margin-top:.35em;letter-spacing:-.01em}
-.hero p{max-width:34ch;margin-top:30px;color:var(--muted);font-size:19px}
 .cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
 .btn{display:inline-block;padding:14px 24px;border-radius:999px;text-decoration:none;font-weight:500;font-size:16px;border:1px solid var(--line);background:var(--glass);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
-.btn.primary{background:var(--rose);color:#23213D;border-color:transparent}
+.btn.primary{background:var(--rose);color:var(--on-rose);border-color:transparent;font-weight:600}
 .hint{margin-top:60px;font-size:14px;color:var(--muted)}
 .guide{padding-top:0;padding-bottom:clamp(70px,10vh,120px)}
 .guide-card{max-width:760px;margin:0 auto;padding:clamp(28px,5vw,54px);border:1px solid var(--line);border-radius:30px;background:color-mix(in srgb,var(--bg2) 72%,transparent);box-shadow:0 24px 80px rgba(0,0,0,.16);text-align:center}
@@ -55,21 +49,21 @@ nav a:hover{color:var(--ink)}
 .guide-card small{display:block;color:var(--muted);margin-top:18px;font-size:13px}
 .guide-form{margin:30px auto 0;min-height:440px;max-width:540px;overflow:hidden;border-radius:18px;background:#fff}
 .guide-form iframe{display:block;width:100%;height:440px;border:0;background:#fff}
-@media (max-width:800px){.hero{align-content:end;padding-top:40svh;padding-bottom:40px}.hint{margin-top:30px}}
+@media (max-width:800px){.hint{margin-top:30px}}
 
 section{padding-block:clamp(90px,14vh,160px)}
-h2{font:400 clamp(38px,5.5vw,68px)/1.02 Cormorant,Georgia,serif;letter-spacing:-.015em;max-width:16ch}
+h2{font:400 clamp(38px,5.5vw,68px)/1.02 var(--serif);letter-spacing:-.015em;max-width:16ch}
 .lead{color:var(--muted);max-width:44ch;margin-top:18px;font-size:18px}
 
 /* nálada */
 .moods{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:44px;max-width:760px}
 .mood{all:unset;cursor:pointer;padding:22px 24px;border:1px solid var(--line);border-radius:22px;background:var(--glass);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);transition:border-color .3s,transform .3s}
-.mood b{display:block;font:500 26px/1.1 Cormorant,Georgia,serif}
+.mood b{display:block;font:500 26px/1.1 var(--serif)}
 .mood small{color:var(--muted);font-size:15px}
 .mood[aria-pressed="true"]{border-color:var(--rose);transform:translateY(-3px)}
 .mood:focus-visible{outline:2px solid var(--rose);outline-offset:3px}
-.answer{margin-top:26px;max-width:46ch;min-height:5.5em;font:italic 400 26px/1.35 Cormorant,Georgia,serif}
-.answer a{font:500 16px Figtree,sans-serif;display:inline-block;margin-top:10px;color:var(--rose)}
+.answer{margin-top:26px;max-width:46ch;min-height:5.5em;font:italic 400 26px/1.35 var(--serif)}
+.answer a{font:500 16px var(--sans);display:inline-block;margin-top:10px;color:var(--rose)}
 
 /* cesta */
 .path{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px}
@@ -78,17 +72,17 @@ h2{font:400 clamp(38px,5.5vw,68px)/1.02 Cormorant,Georgia,serif;letter-spacing:-
 .path li::before{content:"";position:absolute;left:-5px;top:12px;width:9px;height:9px;border-radius:50%;background:var(--bg);border:1px solid var(--muted);transition:.4s}
 .path li.on::before{background:var(--rose);border-color:var(--rose);box-shadow:0 0 14px var(--rose)}
 .path li span{display:block;font-size:14px;color:var(--muted)}
-.path li a{font:400 26px/1.2 Cormorant,Georgia,serif;text-decoration:none}
+.path li a{font:400 26px/1.2 var(--serif);text-decoration:none}
 .path li a:hover{color:var(--rose)}
 @media (max-width:800px){.path{grid-template-columns:1fr}}
 
 /* knihy 3D */
-.shelf{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:56px 30px;margin-top:64px}
+.shelf{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:56px 30px;margin-top:64px}
 .item{text-decoration:none;display:block;perspective:1100px}
 .book{width:190px;height:270px;margin:0 auto 34px;position:relative;transform-style:preserve-3d;transform:rotateY(-32deg) rotateX(4deg);transition:transform .8s cubic-bezier(.2,.8,.2,1)}
 .item:hover .book,.item:focus-visible .book{transform:rotateY(-6deg) rotateX(0) translateZ(20px)}
 .face{position:absolute;inset:0;border-radius:3px 8px 8px 3px;padding:24px 20px;display:flex;flex-direction:column;justify-content:space-between;color:#F3E9E2;transform:translateZ(16px);box-shadow:inset 6px 0 10px rgba(0,0,0,.25);overflow:hidden}
-.face h3{font:500 29px/1.02 Cormorant,Georgia,serif}
+.face h3{font:500 29px/1.02 var(--serif)}
 .face em{font-size:12px;letter-spacing:.04em;opacity:.8;font-style:normal}
 .face::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,rgba(255,255,255,.22),transparent 40%)}
 .pages{position:absolute;top:4px;bottom:4px;left:calc(100% - 15px);width:30px;background:repeating-linear-gradient(90deg,#efe6df 0 2px,#d9cec6 2px 3px);transform:rotateY(90deg)}
@@ -102,7 +96,7 @@ h2{font:400 clamp(38px,5.5vw,68px)/1.02 Cormorant,Georgia,serif;letter-spacing:-
 .product-preview{display:block;width:min(100%,280px);height:auto;aspect-ratio:4/3;object-fit:cover;border-radius:14px;margin:28px auto 34px;box-shadow:0 18px 38px rgba(0,0,0,.2);transition:transform .35s ease}
 .item:hover .product-preview,.item:focus-visible .product-preview{transform:translateY(-5px)}
 .product-badge{display:inline-block;margin-bottom:8px;padding:5px 10px;border:1px solid var(--line);border-radius:999px;color:var(--rose);font-size:12px;font-weight:600}
-.product-title{font:500 29px/1.1 Cormorant,Georgia,serif;margin-bottom:6px}
+.product-title{font:500 29px/1.1 var(--serif);margin-bottom:6px}
 .c3 .face .moon{position:absolute;width:90px;height:90px;border-radius:50%;right:-20px;top:70px;background:radial-gradient(circle at 35% 35%,#F3E9E2,#E8B4B8 60%,transparent 62%);opacity:.8}
 .meta{text-align:center}
 .meta p{color:var(--muted);font-size:15px;max-width:30ch;margin:6px auto 0}
@@ -111,47 +105,20 @@ h2{font:400 clamp(38px,5.5vw,68px)/1.02 Cormorant,Georgia,serif;letter-spacing:-
 /* blog */
 .posts{margin-top:50px;border-top:1px solid var(--line)}
 .post{display:grid;grid-template-columns:1fr auto;gap:20px;align-items:baseline;padding:26px 0;border-bottom:1px solid var(--line);text-decoration:none}
-.post h3{font:400 clamp(24px,3vw,32px)/1.15 Cormorant,Georgia,serif;transition:color .3s}
+.post h3{font:400 clamp(24px,3vw,32px)/1.15 var(--serif);transition:color .3s}
 .post p{color:var(--muted);font-size:15px;margin-top:6px;max-width:60ch}
 .post small{color:var(--muted);font-size:14px;white-space:nowrap}
 .post:hover h3{color:var(--rose)}
 
 .quote{text-align:center}
-.quote blockquote{font:italic 400 clamp(36px,6vw,76px)/1.08 Cormorant,Georgia,serif;max-width:17ch;margin:0 auto}
+.quote blockquote{font:italic 400 clamp(36px,6vw,76px)/1.08 var(--serif);max-width:17ch;margin:0 auto}
 .quote .btn{margin-top:40px}
 
 footer{padding:40px 0 60px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
 footer .wrap{display:flex;flex-wrap:wrap;gap:18px;justify-content:space-between}
 footer a{text-decoration:none}
 
-/* mobil: srdce má vlastní „jeviště“ nahoře, text pod ním se do něj rozplývá */
-.stagefade{display:none}
-@media (max-width:800px){
-  html{scroll-padding-top:50svh}
-  body{background:var(--bg)}
-  /* Srdce je vždy za obsahem. Text má vlastní jemnou kontrastní zónu, která se přizpůsobí malé obrazovce. */
-  main, footer{z-index:1}
-  .scrim{display:none}
-  .stagefade{display:block;position:fixed;inset:0;z-index:-1;pointer-events:none;
-    background:linear-gradient(180deg,var(--bg) 0%,color-mix(in srgb,var(--bg) 86%,transparent) 32%,transparent 56%)}
-  #scene{z-index:0}
-  header{z-index:6}
-  .hero{position:relative;isolation:isolate;align-content:start;padding-top:50svh;min-height:100svh}
-  .hero::before{content:"";position:absolute;z-index:-1;pointer-events:none;inset:30svh -20px 0;
-    background:radial-gradient(ellipse 105% 62% at 22% 48%,var(--bg) 0%,color-mix(in srgb,var(--bg) 92%,transparent) 50%,transparent 78%)}
-  .hero > *{position:relative}
-  main h1,main h2,main p,main blockquote,.answer{text-shadow:0 2px 12px var(--bg),0 0 34px var(--bg)}
-}
-/* Lehký prostorový efekt pro mobil: žádný WebGL, plynulý i na starších telefonech. */
-.mobile-heart{display:none}
-@media (max-width:800px){
-  .mobile-heart{display:block;position:fixed;z-index:0;pointer-events:none;width:178px;height:178px;right:-46px;top:22svh;transform:rotate(-15deg);border-radius:44% 52% 48% 46%;background:radial-gradient(circle at 28% 23%,#fff4fb 0 2%,#f4a1c1 14%,#c34f83 42%,#58234e 76%,#211a35 100%);box-shadow:-18px 24px 46px rgba(0,0,0,.34),inset 14px 14px 20px rgba(255,255,255,.22),inset -18px -22px 30px rgba(30,10,38,.45);animation:sm-float 7s ease-in-out infinite}
-  .mobile-heart::before,.mobile-heart::after{content:"";position:absolute;width:96px;height:96px;border-radius:50%;top:-33px;background:inherit;box-shadow:inset 10px 8px 15px rgba(255,255,255,.13)}
-  .mobile-heart::before{left:1px}.mobile-heart::after{right:1px}
-  @keyframes sm-float{50%{transform:translate3d(-10px,13px,0) rotate(-8deg) scale(1.035);filter:saturate(1.08)}}
-  #scene{display:none}
-}
-@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}.mobile-heart{animation:none}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 
 
 /* Moderní editoriální vrstva: méně hluku, jasnější orientace. */
@@ -163,14 +130,9 @@ header .wrap{height:70px}
 nav{align-items:center;gap:7px;padding:5px;border:1px solid color-mix(in srgb,var(--line) 75%,transparent);border-radius:999px;background:color-mix(in srgb,var(--bg) 45%,transparent)}
 nav a{padding:7px 10px;border-radius:999px;transition:color .2s,background .2s}
 nav a:hover{background:var(--soft-rose)}
-nav .guide-nav{color:var(--ink);background:var(--soft-rose)}
-.hero{position:relative;min-height:calc(100svh - 70px);padding-block:clamp(54px,9vh,120px)}
-.hero::after{content:"";position:absolute;right:0;top:14%;width:min(41vw,480px);aspect-ratio:1;border:1px solid color-mix(in srgb,var(--rose) 30%,transparent);border-radius:50%;box-shadow:0 0 0 34px color-mix(in srgb,var(--rose) 5%,transparent),0 0 0 82px color-mix(in srgb,var(--rose) 3%,transparent);pointer-events:none;opacity:.68}
-.hero > *{position:relative;z-index:1}
+nav .guide-nav{color:var(--rose)}
 .kicker,.section-kicker{display:flex;align-items:center;gap:9px;color:var(--rose);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
 .kicker::before,.section-kicker::before{content:"";width:25px;height:1px;background:currentColor}
-.hero h1{max-width:8.8ch}
-.hero p{max-width:37ch;font-size:18px}
 .cta{gap:10px}
 .btn{padding:13px 21px;transition:transform .2s,background .2s,border-color .2s;box-shadow:0 8px 22px rgba(0,0,0,.07)}
 .btn:hover{transform:translateY(-2px);border-color:color-mix(in srgb,var(--rose) 65%,var(--line))}
@@ -198,8 +160,73 @@ section{padding-block:clamp(78px,12vh,145px)}
 .shelf{gap:56px 24px}.item{padding:24px 12px 18px;border-radius:22px;transition:background .25s}.item:hover{background:color-mix(in srgb,var(--paper) 60%,transparent)}
 .posts{margin-top:38px;border-top-color:color-mix(in srgb,var(--line) 75%,transparent)}.post{padding:28px 16px;border-radius:14px;transition:background .2s,padding .2s}.post:hover{background:var(--paper);padding-inline:22px}.post small{padding:5px 8px;border:1px solid var(--line);border-radius:999px}
 .quote{padding-block:clamp(100px,16vh,180px)}
-@media (max-width:800px){header .wrap{height:62px}.hero{min-height:100svh}.hero::after{display:none}.moods{grid-template-columns:repeat(2,1fr)}.mood{min-height:126px}.path{margin-inline:20px;width:auto}.hero-meta{gap:10px 16px}}
-@media (max-width:480px){.moods{grid-template-columns:1fr}.mood{min-height:0}.guide-card{border-radius:24px}.hero-meta{font-size:13px}}
+@media (max-width:800px){header .wrap{height:62px}.moods{grid-template-columns:repeat(2,1fr)}.mood{min-height:126px}.path{margin-inline:20px;width:auto}.hero-meta{gap:10px 16px}}
+@media (max-width:480px){.logo{font-size:21px;white-space:nowrap}nav{gap:2px}nav a{padding:7px 8px;font-size:14px}.moods{grid-template-columns:1fr}.mood{min-height:0}.guide-card{border-radius:24px}.hero-meta{font-size:13px}}
+
+/* Hero „Myšlenky, které se zklidní": noční scéna s částicemi, které se při posouvání složí do dýchající koule. */
+:root{--gold:#b48a2c}
+:root[data-theme="dark"]{--gold:#e8c66e}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--gold:#e8c66e}}
+.hero-track{position:relative;height:260vh;height:260svh;margin-top:-70px;
+  --ink:#F3E9E2;--muted:#C9C1D8;--rose:#E8B4B8;--on-rose:#23213D;--line:rgba(243,233,226,.16);--glass:rgba(38,35,63,.5);--gold:#e8c66e;color:var(--ink)}
+.hero-stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;
+  background:radial-gradient(90% 70% at 72% 42%,#3a2a55 0%,#231d3c 45%,#16142a 100%)}
+.hero-stage::after{content:"";position:absolute;inset:auto 0 0;height:16vh;pointer-events:none;background:linear-gradient(rgba(22,20,42,0),color-mix(in srgb,var(--bg) 35%,transparent) 55%,var(--bg))}
+#thoughts,.thoughts-fallback{position:absolute;inset:0;width:100%;height:100%;display:block}
+.thoughts-fallback{background:radial-gradient(circle at 72% 46%,rgba(255,226,170,.55) 0,rgba(232,180,184,.35) 9%,rgba(140,119,160,.18) 18%,transparent 30%);opacity:0;transition:opacity 1s}
+.no-webgl .thoughts-fallback{opacity:1}
+.hero{position:relative;z-index:1;height:100%;display:grid;align-content:center;padding-block:96px 48px;pointer-events:none}
+.hero > div{max-width:min(640px,50vw);pointer-events:auto}
+.hero h1{font:300 clamp(46px,6.2vw,98px)/.98 var(--serif);font-variation-settings:"opsz" 144;letter-spacing:-.025em;margin:.25em 0 .2em;text-wrap:balance;text-shadow:0 2px 30px rgba(22,20,42,.6)}
+.hero h1 .swap{display:inline-grid;font-size:.62em;margin-top:.3em;font-style:italic;color:var(--muted)}
+.hero h1 .swap>span{grid-area:1/1;transition:opacity 1.1s ease,filter 1.1s ease,transform 1.1s ease}
+.hero h1 .swap .b{opacity:0;filter:blur(8px);transform:translateY(10px);color:#f3d79a}
+.calm h1 .swap .a{opacity:0;filter:blur(8px);transform:translateY(-10px)}
+.calm h1 .swap .b{opacity:1;filter:none;transform:none}
+.hero p{max-width:34em;color:var(--muted);font-size:clamp(16px,1.25vw,19px)}
+.hero .cta{margin-top:26px}
+.breath{display:flex;align-items:center;gap:14px;margin-top:26px;font:italic 300 19px/1.4 var(--serif);color:#f3d79a;opacity:0;transform:translateY(8px);transition:opacity 1.2s .2s,transform 1.2s .2s}
+.breath i{width:10px;height:10px;border-radius:50%;background:#f3d79a;box-shadow:0 0 18px #f3d79a;transform:scale(var(--b,1));transition:transform .2s linear}
+.breath small{display:block;font:400 13px/1.4 var(--sans);font-style:normal;color:var(--muted)}
+.calm .breath{opacity:1;transform:none}
+.scroll-hint{position:absolute;z-index:1;left:50%;bottom:22px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);transition:opacity .6s}
+.scroll-hint i{width:1px;height:38px;background:linear-gradient(var(--muted),transparent);animation:drip 2.2s ease-in-out infinite;transform-origin:top}
+@keyframes drip{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
+.scrolled .scroll-hint{opacity:0}
+.hero-intro>*{animation:rise 1.2s cubic-bezier(.2,.7,.2,1) both}
+.hero-intro>*:nth-child(2){animation-delay:.12s}.hero-intro>*:nth-child(3){animation-delay:.24s}.hero-intro>*:nth-child(4){animation-delay:.36s}.hero-intro>*:nth-child(5){animation-delay:.48s}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}}
+header.on-dark{--ink:#F3E9E2;--muted:#C9C1D8;--rose:#E8B4B8;--line:rgba(243,233,226,.16);--bg:#1C1B33;color:var(--ink)}
+@media (max-width:800px){
+  .hero-track{margin-top:-62px}
+  .hero{align-content:end;padding-block:0 17vh}
+  .hero > div{max-width:none}
+  .hero h1{font-size:clamp(38px,10.5vw,58px)}
+  .hero p{font-size:16px}
+  .hero-meta,.scroll-hint{display:none}
+  .thoughts-fallback{background-position:0 -22vh}
+}
+
+/* Dopis, který se rozplyne */
+.letter-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:6vw;align-items:center}
+.letter-grid h2 em{color:var(--muted);font-weight:300}
+.paper{position:relative;border-radius:22px;padding:26px 26px 18px;background:linear-gradient(#fffdfa,#fbf6f2);color:#23213D;box-shadow:0 1px 0 rgba(255,255,255,.9) inset,0 30px 60px -30px rgba(20,10,30,.45),0 2px 8px rgba(20,10,30,.08);transform:rotate(-.6deg)}
+.paper::after{content:"";position:absolute;inset:26px 26px 74px;pointer-events:none;background:repeating-linear-gradient(transparent 0 37px,rgba(156,74,87,.13) 37px 38px)}
+.paper textarea{position:relative;z-index:1;display:block;width:100%;height:300px;resize:none;border:0;outline:0;background:transparent;font:italic 300 22px/38px var(--serif);color:#23213D;padding:0;transition:color .4s}
+.paper textarea::placeholder{color:rgba(94,88,122,.6)}
+.paper textarea.ghost{color:transparent}
+.paper:focus-within{box-shadow:0 0 0 2px #9C4A57,0 30px 60px -30px rgba(20,10,30,.45)}
+.paper-foot{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:14px;font-size:13px;color:#5E587A}
+.paper .btn.primary{background:#9C4A57;color:#fff}
+.letter-after{margin-top:26px;font:italic 300 24px/1.4 var(--serif);opacity:0;transform:translateY(8px);transition:opacity 1s,transform 1s}
+.letter-after.show{opacity:1;transform:none}
+.letter-after a{display:inline-block;margin-top:10px;font:500 15px/1.4 var(--sans);color:var(--rose)}
+.nudge{animation:nudge .45s}
+@keyframes nudge{20%,60%{transform:rotate(-.6deg) translateX(-6px)}40%,80%{transform:rotate(-.6deg) translateX(6px)}}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+#dust{position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:30}
+@media (max-width:800px){.letter-grid{grid-template-columns:1fr;gap:28px}.paper textarea{height:240px;font-size:20px}}
+@media (prefers-reduced-motion:reduce){.scroll-hint i,.hero-intro>*{animation:none}}
 
 </style>
 <meta name="msvalidate.01" content="2061DEC4C7C23F079F486945C9E3084E">
@@ -220,9 +247,6 @@ section{padding-block:clamp(78px,12vh,145px)}
 <meta name="twitter:image" content="https://sila-myslenky.com/media/og-sila-myslenky-v1.png">
 </head>
 <body>
-<canvas id="scene" aria-hidden="true"></canvas><div class="mobile-heart" aria-hidden="true"></div>
-<div class="scrim" aria-hidden="true"></div>
-<div class="stagefade" aria-hidden="true"></div>
 
 <header>
   <div class="wrap">
@@ -238,18 +262,26 @@ section{padding-block:clamp(78px,12vh,145px)}
 </header>
 
 <main id="top">
-  <section class="hero wrap">
-    <div class="kicker">Místo, kde můžeš na chvíli zpomalit</div>
-    <h1>Některé rány nejsou vidět.<span>A přesto bolí.</span></h1>
-    <p>Prostor pro vztahy, rozchody, zklamání a nový začátek. Protože někdy stačí jedna věta, aby člověk věděl, že v tom není sám.</p>
-    <div class="cta">
-      <a class="btn primary" href="https://koki-p30.systeme.io/checklist" target="_blank" rel="noopener">Checklist zdarma</a>
-      <a class="btn" href="#dnes">Vyber, jak ti je</a>
-      <a class="btn" href="blog/">Začít číst</a>
-    </div>
-    <div class="hero-meta" aria-label="Co na webu najdeš"><span>Čti vlastním tempem</span><span>Nový text každý den</span><span>Bez nátlaku</span></div>
-  </section>
-
+  <div class="hero-track" id="hero-track">
+  <div class="hero-stage" id="hero-stage">
+    <canvas id="thoughts" aria-hidden="true"></canvas>
+    <div class="thoughts-fallback" aria-hidden="true"></div>
+    <section class="hero wrap" id="hero">
+      <div class="hero-intro">
+        <div class="kicker">Místo, kde můžeš na chvíli zpomalit</div>
+        <h1>Některé rány nejsou vidět.<br>
+          <span class="swap"><span class="a">A přesto bolí.</span><span class="b" aria-hidden="true">A přesto se dá dýchat.</span></span></h1>
+        <p>Prostor pro vztahy, rozchody, zklamání a nový začátek. Protože někdy stačí jedna věta, aby člověk věděl, že v tom není sám.</p>
+        <div class="cta">
+          <a class="btn primary" href="https://koki-p30.systeme.io/checklist" target="_blank" rel="noopener">Checklist zdarma</a>
+          <a class="btn" href="blog/">Začít číst</a>
+        </div>
+        <div class="breath" aria-hidden="true"><i></i><div><span id="breath-word">Nádech</span><small>Zkus dýchat s ní. Nádech na čtyři, výdech na šest.</small></div></div>
+      </div>
+    </section>
+    <div class="scroll-hint" aria-hidden="true">Pomalu sjeď dolů<i></i></div>
+  </div>
+  </div>
 
   <section id="checklist" class="guide wrap" aria-labelledby="checklist-title">
     <div class="guide-card with-preview">
@@ -266,7 +298,7 @@ section{padding-block:clamp(78px,12vh,145px)}
   </section>
   <section id="dnes" class="wrap">
     <h2>Nemusíš hledat správná slova.</h2>
-    <p class="lead">Vyber, co je ti teď nejblíž. Světlo uvnitř se přizpůsobí.</p>
+    <p class="lead">Vyber, co je ti teď nejblíž. Najdeš tu větu pro dnešek a text, který tě podrží.</p>
     <div class="moods" role="group" aria-label="Jak ti je">
       <button class="mood" data-i="0" aria-pressed="false"><b>Je mi smutno</b><small>Unést konec vztahu</small></button>
       <button class="mood" data-i="1" aria-pressed="false"><b>Chci napsat</b><small>Zastavit se před odesláním</small></button>
@@ -274,6 +306,25 @@ section{padding-block:clamp(78px,12vh,145px)}
       <button class="mood" data-i="3" aria-pressed="false"><b>Chci se vrátit k sobě</b><small>Začít jedním malým krokem</small></button>
     </div>
     <div class="answer" aria-live="polite"></div>
+  </section>
+
+  <section id="dopis" class="wrap" aria-labelledby="dopis-title">
+    <div class="letter-grid">
+      <div>
+        <div class="section-kicker">Když chceš napsat</div>
+        <h2 id="dopis-title" style="margin-top:16px">Napiš to sem.<br><em>Místo do zprávy.</em></h2>
+        <p class="lead">Všechno, co se ti teď honí hlavou a chce to ven. Až budeš mít dopsáno, pusť to. Nic se neukládá ani neodesílá. Slova se prostě rozplynou.</p>
+        <p class="letter-after" id="letter-after" aria-live="polite"></p>
+      </div>
+      <div class="paper" id="paper">
+        <label class="sr-only" for="letter-input">Tvůj dopis</label>
+        <textarea id="letter-input" placeholder="Chci ti říct, že…"></textarea>
+        <div class="paper-foot">
+          <span>Zůstane jen u tebe. A pak zmizí.</span>
+          <button class="btn primary" id="letter-release" type="button">Pustit to</button>
+        </div>
+      </div>
+    </div>
   </section>
 
   <section id="cesta" class="wrap path">
@@ -350,28 +401,26 @@ section{padding-block:clamp(78px,12vh,145px)}
   </div>
 </footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+<canvas id="dust" aria-hidden="true"></canvas>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.min.js"}}</script>
+<script type="module" src="assets/myslenky.js"></script>
 <script>
-window.addEventListener("load",()=>{(function(){
-  let pulse = 0;
+(function(){
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ---------- nálady ---------- */
   const moods = [
-    {c:0x8fa6ff, t:'Smutek není chyba. Je to láska, která zrovna nemá kam jít.', l:'Když vztah skončí', h:'https://sila-myslenky.com/blog/kdyz-vztah-skonci.html'},
-    {c:0xffb36b, t:'Nadechni se. Zpráva počká deset minut, ty si je zasloužíš víc.', l:'Když tě přepadne chuť napsat', h:'https://sila-myslenky.com/blog/kdyz-te-prepadne-chut-napsat.html'},
-    {c:0xc9a7ff, t:'Nemusíš se rozhodnout dnes. Stačí se podívat pravdivě.', l:'Za vztah, nebo za vzpomínku?', h:'https://sila-myslenky.com/blog/za-vztah-nebo-vzpominku.html'},
-    {c:0xffc4c8, t:'Cesta zpátky nezačíná velkým plánem. Začíná tím, že si vybereš sebe.', l:'První kroky zpět k sobě', h:'https://sila-myslenky.com/blog/prvni-kroky-zpet-k-sobe.html'}
+    {t:'Smutek není chyba. Je to láska, která zrovna nemá kam jít.', l:'Když vztah skončí', h:'https://sila-myslenky.com/blog/kdyz-vztah-skonci.html'},
+    {t:'Nadechni se. Zpráva počká deset minut, ty si je zasloužíš víc.', l:'Napiš to nejdřív sem', h:'#dopis', p:''},
+    {t:'Nemusíš se rozhodnout dnes. Stačí se podívat pravdivě.', l:'Za vztah, nebo za vzpomínku?', h:'https://sila-myslenky.com/blog/za-vztah-nebo-vzpominku.html'},
+    {t:'Cesta zpátky nezačíná velkým plánem. Začíná tím, že si vybereš sebe.', l:'První kroky zpět k sobě', h:'https://sila-myslenky.com/blog/prvni-kroky-zpet-k-sobe.html'}
   ];
-  let targetColor = window.THREE ? new THREE.Color(0xffc4c8) : null;
   const answer = document.querySelector('.answer');
   document.querySelectorAll('.mood').forEach(b=>b.addEventListener('click',()=>{
     document.querySelectorAll('.mood').forEach(x=>x.setAttribute('aria-pressed','false'));
     b.setAttribute('aria-pressed','true');
     const m = moods[+b.dataset.i];
-    answer.innerHTML = m.t + '<br><a href="'+m.h+'">Číst: '+m.l+'</a>';
-    if (window.THREE) targetColor = new THREE.Color(m.c);
-    pulse = 1;
+    answer.innerHTML = m.t + '<br><a href="'+m.h+'">'+(m.p ?? 'Číst: ')+m.l+'</a>';
   }));
 
   /* ---------- cesta: body se rozsvěcují ---------- */
@@ -379,208 +428,97 @@ window.addEventListener("load",()=>{(function(){
   const io = new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('on'); }),{rootMargin:'0px 0px -35% 0px'});
   days.forEach(d=>io.observe(d));
 
-  if (innerWidth <= 800 || !window.THREE) return;
+  /* ---------- hero: stav podle scrollu (text, hlavička); částice kreslí assets/myslenky.js ---------- */
+  const track = document.getElementById('hero-track'), hero = document.getElementById('hero'), header = document.querySelector('header');
+  function onScroll(){
+    const span = track.offsetHeight - innerHeight;
+    const prog = span > 0 ? (scrollY - track.offsetTop) / (span * .8) : 1;
+    document.body.classList.toggle('scrolled', scrollY > 30);
+    hero.classList.toggle('calm', reduce || prog > .8);
+    header.classList.toggle('on-dark', scrollY < track.offsetTop + track.offsetHeight - header.offsetHeight);
+  }
+  addEventListener('scroll', onScroll, {passive:true});
+  addEventListener('resize', onScroll);
+  onScroll();
+  // bez WebGL (nebo když se knihovna nenačte) zůstane jen jemná statická záře
+  setTimeout(() => { if (!window.__thoughts) document.getElementById('hero-stage').classList.add('no-webgl'); }, 4000);
 
-  /* ---------- 3D scéna: rozbitý měsíc, který se skládá ---------- */
-  const canvas = document.getElementById('scene');
-  const renderer = new THREE.WebGLRenderer({canvas, antialias:true, alpha:true});
-  renderer.setPixelRatio(Math.min(devicePixelRatio, innerWidth <= 800 ? 1 : 1.5));
-  renderer.outputEncoding = THREE.sRGBEncoding;
-  renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = .92;
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(40,1,.1,100);
-  camera.position.set(0,0,9);
+  /* ---------- dopis, který se rozplyne ---------- */
+  const ta = document.getElementById('letter-input'), paper = document.getElementById('paper');
+  const btn = document.getElementById('letter-release'), after = document.getElementById('letter-after');
+  const dust = document.getElementById('dust'), dctx = dust.getContext('2d');
+  let parts = [];
 
-  // ---------- studiové prostředí pro odlesky (softboxy) ----------
-  (function(){
-    const env=new THREE.Scene();
-    const c=document.createElement('canvas'); c.width=16; c.height=256; const g=c.getContext('2d');
-    const gr=g.createLinearGradient(0,0,0,256); gr.addColorStop(0,'#8a78b8'); gr.addColorStop(.45,'#3a2f5a'); gr.addColorStop(1,'#120e22');
-    g.fillStyle=gr; g.fillRect(0,0,16,256);
-    env.add(new THREE.Mesh(new THREE.SphereGeometry(20,32,16), new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(c), side:THREE.BackSide})));
-    const box=(w,h,col,x,y,z)=>{ const m=new THREE.Mesh(new THREE.PlaneGeometry(w,h), new THREE.MeshBasicMaterial({color:col, side:THREE.DoubleSide})); m.position.set(x,y,z); m.lookAt(0,0,0); env.add(m); };
-    box(10,6,0xffffff,-8,9,10);       // hlavní softbox vlevo nahoře
-    box(3,14,0xffd9e0,12,0,4);        // růžový proužek zprava
-    box(12,2,0xb9c6ff,0,-10,-8);      // chladný spodní odraz
-    const pm=new THREE.PMREMGenerator(renderer);
-    scene.environment=pm.fromScene(env,.04).texture;
-  })();
+  function finish(){
+    ta.value = ''; ta.classList.remove('ghost'); btn.disabled = false;
+    after.innerHTML = 'Neodešlo to k nikomu. Odešlo to z tebe.<br><a href="blog/kdyz-te-prepadne-chut-napsat.html">Přečti si: Když tě přepadne chuť napsat →</a>';
+    after.classList.add('show');
+  }
+  btn.addEventListener('click', () => {
+    if (!ta.value.trim()) { paper.classList.remove('nudge'); void paper.offsetWidth; paper.classList.add('nudge'); ta.focus(); return; }
+    after.classList.remove('show'); btn.disabled = true;
+    if (reduce) { ta.classList.add('ghost'); setTimeout(finish, 500); return; }
 
-  // ---------- srdce: měkký „nafouknutý“ tvar, rozdělený na střepy ----------
-  let seed=20260920; const rnd=()=>{seed|=0;seed=seed+0x6D2B79F5|0;let t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};
-  const HS=.1, C0=[0,-.3];
-  const outl=t=>[16*Math.pow(Math.sin(t),3)*HS, (13*Math.cos(t)-5*Math.cos(2*t)-2*Math.cos(3*t)-Math.cos(4*t))*HS];
-  function heartGeo(T,R,thick){
-    let maxL=0; for(let i=0;i<T;i++){ const o=outl(2*Math.PI*i/T); maxL=Math.max(maxL,Math.hypot(o[0]-C0[0],o[1]-C0[1])); }
-    const P=[], idx=[];
-    const add=(x,y,z)=>{P.push(x,y,z); return P.length/3-1;};
-    const fc=add(C0[0],C0[1], thick*.72), bc=add(C0[0],C0[1],-thick*.72);
-    const F=[],B=[],RIM=[];
-    for(let i=0;i<T;i++){
-      const o=outl(2*Math.PI*i/T), L=Math.hypot(o[0]-C0[0],o[1]-C0[1]);
-      const H=thick*(.55+.45*L/maxL);
-      F[i]=[fc]; B[i]=[bc];
-      for(let j=1;j<=R;j++){
-        const r=Math.sin(j/R*Math.PI/2), x=C0[0]+r*(o[0]-C0[0]), y=C0[1]+r*(o[1]-C0[1]);
-        const z=H*Math.pow(Math.max(0,1-Math.pow(r,2.6)),.5);
-        if(j===R){ RIM[i]=add(x,y,0); F[i][j]=B[i][j]=RIM[i]; }
-        else { F[i][j]=add(x,y,z); B[i][j]=add(x,y,-z); }
+    const r = ta.getBoundingClientRect(), cs = getComputedStyle(ta);
+    const w = Math.ceil(r.width), h = Math.ceil(r.height);
+    const lh = parseFloat(cs.lineHeight), fs = parseFloat(cs.fontSize);
+    const oc = document.createElement('canvas'); oc.width = w; oc.height = h;
+    const o = oc.getContext('2d');
+    o.font = `${cs.fontStyle} ${cs.fontWeight} ${cs.fontSize} ${cs.fontFamily}`; o.textBaseline = 'top'; o.fillStyle = '#000';
+    const lines = [];
+    for (const para of ta.value.split('\n')) {
+      let line = '';
+      for (const word of para.split(/\s+/)) {
+        const test = line ? line + ' ' + word : word;
+        if (o.measureText(test).width > w && line) { lines.push(line); line = word; } else line = test;
       }
+      lines.push(line);
     }
-    for(let i=0;i<T;i++){ const k=(i+1)%T;
-      for(let j=0;j<R;j++){
-        const a=F[i][j],b=F[k][j],c=F[k][j+1],d=F[i][j+1];
-        if(j===0) idx.push(a,c,d); else idx.push(a,b,c, a,c,d);
-        const A=B[i][j],Bb=B[k][j],Cc=B[k][j+1],D=B[i][j+1];
-        if(j===0) idx.push(A,D,Cc); else idx.push(A,Cc,Bb, A,D,Cc);
-      }
-    }
-    const g=new THREE.BufferGeometry(); g.setAttribute('position',new THREE.Float32BufferAttribute(P,3)); g.setIndex(idx);
-    g.computeVertexNormals();
-    // směr normál ven (kontrola podle přední strany)
-    return g.toNonIndexed();
-  }
-  const full=heartGeo(220,48,.62);
-  { // ověř orientaci normál: přední vrchol musí mít normálu s kladným z
-    const n=full.attributes.normal.array, pz=full.attributes.position.array; let s=0;
-    for(let i=0;i<pz.length;i+=3) s+=Math.sign(pz[i+2])*n[i+2];
-    if(s<0){ for(let i=0;i<n.length;i++) n[i]*=-1; }
-  }
-
-  // hlavní zubatá prasklina a střepy
-  const topY=outl(0)[1], botY=outl(Math.PI)[1];
-  const crack=[[0,topY]]; const CS=16;
-  for(let i=1;i<CS;i++) crack.push([(i%2?1:-1)*(.05+rnd()*.17), topY+(botY-topY)*i/CS]);
-  crack.push([0,botY]);
-  const crackX=y=>{ if(y>=topY) return 0; if(y<=botY) return 0;
-    for(let i=0;i<crack.length-1;i++){ const a=crack[i],b=crack[i+1]; if(y<=a[1]&&y>=b[1]){ const k=(y-a[1])/(b[1]-a[1]); return a[0]+(b[0]-a[0])*k; } } return 0; };
-  const OL=[]; for(let i=0;i<200;i++) OL.push(outl(2*Math.PI*i/200));
-  const inside=(x,y)=>{ let c=false; for(let i=0,j=OL.length-1;i<OL.length;j=i++){ const [xi,yi]=OL[i],[xj,yj]=OL[j]; if(((yi>y)!=(yj>y))&&(x<(xj-xi)*(y-yi)/(yj-yi)+xi)) c=!c; } return c; };
-  const seeds=[[],[]];
-  for(let h=0;h<2;h++){ let guard=0;
-    while(seeds[h].length<10 && guard++<6000){ const x=(rnd()*2-1)*1.7, y=botY+rnd()*(1.25-botY);
-      if(!inside(x,y)) continue; if((x<crackX(y)?0:1)!==h) continue;
-      if(seeds[h].every(q=>Math.hypot(q[0]-x,q[1]-y)>.48)) seeds[h].push([x,y]); } }
-  const noise=(x,y)=>.07*Math.sin(x*9.1+y*4.3)*Math.cos(y*7.7-x*3.1)+.035*Math.sin(x*23+y*19);
-  const pos=full.attributes.position.array, nor=full.attributes.normal.array;
-  const buckets={};
-  for(let f=0; f<pos.length/9; f++){
-    const o=f*9, x=(pos[o]+pos[o+3]+pos[o+6])/3, y=(pos[o+1]+pos[o+4]+pos[o+7])/3;
-    const h = x < crackX(y)+noise(x,y)*.4 ? 0 : 1;
-    let best=0,bd=1e9; seeds[h].forEach((q,i)=>{ const d=Math.hypot(q[0]-x,q[1]-y)+noise(x+i,y-i); if(d<bd){bd=d;best=i;} });
-    (buckets[h+'_'+best]=buckets[h+'_'+best]||[]).push(f);
-  }
-
-  const heartMat = new THREE.MeshPhysicalMaterial({color:0xc74567, roughness:.17, metalness:.08, clearcoat:1, clearcoatRoughness:.025, reflectivity:.9, envMapIntensity:1.55, side:THREE.DoubleSide});
-  // Živé, teplé jádro pro hloubku mezi jednotlivými částmi srdce.
-  const coreMatIn = new THREE.MeshPhysicalMaterial({color:0xffa6bb, emissive:0x541427, emissiveIntensity:.65, roughness:.28, metalness:.02, clearcoat:.7, transparent:true, opacity:.94});
-  const L=new THREE.Group(), R=new THREE.Group(), pieces=[];
-  Object.keys(buckets).forEach(key=>{
-    const fs=buckets[key], h=+key[0];
-    let cx=0,cy=0; fs.forEach(f=>{const o=f*9; cx+=pos[o]+pos[o+3]+pos[o+6]; cy+=pos[o+1]+pos[o+4]+pos[o+7];}); cx/=fs.length*3; cy/=fs.length*3;
-    const P=new Float32Array(fs.length*9), N=new Float32Array(fs.length*9);
-    fs.forEach((f,i)=>{ for(let k=0;k<9;k++){ P[i*9+k]=pos[f*9+k]-(k%3===0?cx:k%3===1?cy:0); N[i*9+k]=nor[f*9+k]; } });
-    const g=new THREE.BufferGeometry(); g.setAttribute('position',new THREE.BufferAttribute(P,3)); g.setAttribute('normal',new THREE.BufferAttribute(N,3));
-    const m=new THREE.Mesh(g,heartMat); m.position.set(cx,cy,0);
-    const sign=h?1:-1;
-    m.userData={base:new THREE.Vector3(cx,cy,0), dir:new THREE.Vector3(cx*.9+sign*.4, cy-.1, (rnd()-.5)*1.6).normalize(), dist:.22+rnd()*.5,
-      rot:new THREE.Vector3((rnd()-.5)*1.1,(rnd()-.5)*1.3,(rnd()-.5)*.8), delay:rnd()*.5};
-    (h?R:L).add(m); pieces.push(m);
+    let y = -ta.scrollTop + (lh - fs) / 2;
+    for (const line of lines) { if (y > -lh && y < h) o.fillText(line, 0, y); y += lh; }
+    const data = o.getImageData(0, 0, w, h).data;
+    let step = 2, pts;
+    do {
+      pts = [];
+      for (let yy = 0; yy < h; yy += step) for (let xx = 0; xx < w; xx += step) if (data[(yy * w + xx) * 4 + 3] > 110) pts.push([xx, yy]);
+      step++;
+    } while (pts.length > 9000);
+    const now = performance.now();
+    parts = pts.map(([x, y]) => ({
+      x: r.left + x, y: r.top + y, vx: 0, vy: 0, a: 1,
+      start: now + (x / w) * 750 + (y / h) * 180 + Math.random() * 260,
+      s: .7 + Math.random() * .6, gold: Math.random() < .38
+    }));
+    ta.classList.add('ghost');
+    requestAnimationFrame(animateDust);
   });
-  // zářící jádro, které prosvítá prasklinami
-  const coreHeart=new THREE.Mesh(heartGeo(180,28,.62), coreMatIn); coreHeart.scale.setScalar(.905);
-  const heartG=new THREE.Group(); heartG.add(coreHeart,L,R);
-  const group = new THREE.Group(); group.add(heartG); scene.add(group);
-  heartG.position.y=.3;
 
-  // drobné úlomky kolem
-  const shardGeo=new THREE.TetrahedronGeometry(.055,0);
-  const shards=[];
-  for(let i=0;i<46;i++){ const sm=new THREE.Mesh(shardGeo,heartMat);
-    sm.userData={a:rnd()*6.28, r:1.9+rnd()*1.4, y:(rnd()-.5)*2.6, sp:(.15+rnd()*.35)*(rnd()<.5?-1:1), s:.5+rnd()*1.4, spin:rnd()*3};
-    heartG.add(sm); shards.push(sm); }
-
-  const coreMat = { color:new THREE.Color() };
-  const glowTex = (()=>{ const c=document.createElement('canvas'); c.width=c.height=128; const g=c.getContext('2d');
-    const r=g.createRadialGradient(64,64,0,64,64,64); r.addColorStop(0,'rgba(255,255,255,1)'); r.addColorStop(.3,'rgba(255,255,255,.35)'); r.addColorStop(1,'rgba(255,255,255,0)');
-    g.fillStyle=r; g.fillRect(0,0,128,128); return new THREE.CanvasTexture(c); })();
-  const glow = new THREE.Sprite(new THREE.SpriteMaterial({map:glowTex, color:0xffc4c8, transparent:true, blending:THREE.AdditiveBlending, depthWrite:false}));
-  glow.scale.set(7,7,1); glow.position.z=-.6; group.add(glow);
-  const inner = new THREE.PointLight(0xffc4c8, 2.2, 8); inner.position.z=.9; group.add(inner);
-
-  scene.add(new THREE.AmbientLight(0x6e5a80, .25));
-  const key = new THREE.DirectionalLight(0xfff1ea, 1.1); key.position.set(-4,5,6); scene.add(key);
-  const rim = new THREE.DirectionalLight(0x9fb2ff, 1.4); rim.position.set(5,-2,-4); scene.add(rim);
-
-  // myšlenky – drobné částice
-  const pc = innerWidth <= 800 ? 260 : 700, pg = new THREE.BufferGeometry(), pp = new Float32Array(pc*3);
-  for(let i=0;i<pc;i++){ const r=4+Math.random()*14, t=Math.random()*6.28, p=Math.acos(2*Math.random()-1);
-    pp[i*3]=r*Math.sin(p)*Math.cos(t); pp[i*3+1]=r*Math.cos(p); pp[i*3+2]=r*Math.sin(p)*Math.sin(t)-6; }
-  pg.setAttribute('position', new THREE.BufferAttribute(pp,3));
-  const dots = new THREE.Points(pg, new THREE.PointsMaterial({size:.05, color:0xf3e9e2, transparent:true, opacity:.55, map:glowTex, depthWrite:false, blending:THREE.AdditiveBlending}));
-  scene.add(dots);
-
-  let W=0,H=0;
-  function resize(){ W=innerWidth; H=innerHeight; renderer.setSize(W,H,false); camera.aspect=W/H; camera.updateProjectionMatrix(); }
-  addEventListener('resize', resize); resize();
-
-  let mx=0,my=0;
-  addEventListener('pointermove', e=>{ mx=e.clientX/W-.5; my=e.clientY/H-.5; }, {passive:true});
-
-  let broken=1, t0=performance.now();
-  const col = new THREE.Color(0xffc4c8);
-
-  function frame(now){
-    const t=(now-t0)/1000;
-    const max = document.documentElement.scrollHeight - H;
-    const cesta = document.getElementById('cesta');
-    const healEnd = cesta.offsetTop + cesta.offsetHeight - H*.5;
-    const target = reduce ? .25 : Math.max(0, 1 - scrollY/Math.max(1,healEnd));
-    broken += (target-broken)*.06;
-
-    const sm=x=>x*x*(3-2*x);
-    const bk = broken<.003?0:broken;
-    const e=sm(bk);
-    L.position.set(-.95*e, .15*e, .3*e); L.rotation.set(0,-.5*e, .3*e);
-    R.position.set( .95*e,-.1*e,-.2*e);  R.rotation.set(0, .45*e,-.26*e);
-    for(const p of pieces){ const u=p.userData;
-      const ei=sm(Math.min(1,Math.max(0,(bk-u.delay)/(1-u.delay))));
-      p.position.copy(u.base).addScaledVector(u.dir,u.dist*ei);
-      p.rotation.set(u.rot.x*ei,u.rot.y*ei,u.rot.z*ei); }
-    coreHeart.visible = e>0;
-    for(const q of shards){ const u=q.userData, rr=u.r*(.35+.65*e);
-      q.position.set(Math.cos(u.a+t*u.sp)*rr, u.y*(.3+.7*e)+Math.sin(t*.7+u.a)*.1, Math.sin(u.a+t*u.sp)*rr*.6);
-      q.rotation.set(t*u.spin, t*u.spin*.7, 0); q.scale.setScalar(u.s*Math.min(1,e*1.4)); q.visible=e>.02; }
-    // tlukot zdravého srdce
-    const ph=(t%1.15)/1.15, beat=(1-e)*(reduce?0:(Math.exp(-Math.pow((ph-.06)/.035,2))*.05+Math.exp(-Math.pow((ph-.24)/.045,2))*.032));
-        col.lerp(targetColor,.04);
-    glow.material.color.copy(col); inner.color.copy(col); coreMatIn.color.copy(col);
-    pulse*=.95;
-    const breathe = reduce?1:1+Math.sin(t*1.1)*.03;
-    glow.scale.setScalar((5.5 + broken*2 + pulse*2 + beat*14)*breathe);
-    heartG.scale.setScalar(breathe*(1+beat));
-
-    // pozice: v hero vpravo, pak se stahuje do středu
-    const wide = W>800;
-    group.position.x = wide ? 2.4 : 0;
-    group.position.y = wide ? 0 : 1.45;
-    group.scale.setScalar(wide ? 1 : .68);
-    glow.material.opacity = wide ? .9 : .55; dots.material.opacity = wide ? .55 : .3;
-    inner.intensity = 2.2;
-    group.rotation.y = THREE.MathUtils.lerp(group.rotation.y, (reduce?0:Math.sin(t*.45)*.4) + mx*.6, .05);
-    group.rotation.x = THREE.MathUtils.lerp(group.rotation.x, my*.35, .05);
-    group.rotation.z = THREE.MathUtils.lerp(group.rotation.z, -mx*.3, .05);
-    dots.rotation.y = t*.01 + scrollY*.0002;
-    camera.position.x += (mx*.6 - camera.position.x)*.04;
-    camera.lookAt(0,0,0);
-
-    renderer.render(scene,camera);
-    requestAnimationFrame(frame);
+  function animateDust(t){
+    const d = Math.min(devicePixelRatio || 1, 2);
+    if (dust.width !== innerWidth * d || dust.height !== innerHeight * d) { dust.width = innerWidth * d; dust.height = innerHeight * d; }
+    dctx.setTransform(d, 0, 0, d, 0, 0);
+    dctx.clearRect(0, 0, innerWidth, innerHeight);
+    const ink = getComputedStyle(document.body).color;
+    let alive = 0;
+    for (const p of parts) {
+      if (p.a <= 0) continue;
+      alive++;
+      const moving = t > p.start;
+      if (moving) {
+        p.vx += .035 * p.s + Math.sin(p.y * .025 + t * .002) * .05;
+        p.vy -= .028 * p.s;
+        p.x += p.vx; p.y += p.vy;
+        p.a -= .0075 * p.s;
+      }
+      dctx.globalAlpha = Math.max(0, p.a);
+      dctx.fillStyle = (p.gold && moving) ? '#c99a35' : (moving ? ink : '#23213D');
+      dctx.fillRect(p.x, p.y, 1.6, 1.6);
+    }
+    dctx.globalAlpha = 1;
+    if (alive) requestAnimationFrame(animateDust);
+    else { dctx.clearRect(0, 0, innerWidth, innerHeight); finish(); }
   }
-  requestAnimationFrame(frame);
-
-})();});
+})();
 </script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "b542733f5096473eb1f3784915fd044a"}'></script><!-- End Cloudflare Web Analytics -->
 <script src="assets/events.js" defer></script><script src="assets/analytics.js" defer></script></body>

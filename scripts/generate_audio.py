@@ -79,6 +79,8 @@ def main() -> int:
         print("AZURE_SPEECH_KEY is not configured", file=sys.stderr); return 2
     AUDIO.mkdir(exist_ok=True)
     for page in sorted(BLOG.glob("*.html")):
+        if page.name == "index.html":  # výpis článků, ne článek
+            continue
         source = page.read_text(encoding="utf-8")
         parts = narration(source)
         if len(parts) < 2:
