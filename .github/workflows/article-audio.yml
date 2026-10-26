@@ -8,6 +8,7 @@ on:
       - 'scripts/generate_audio.py'
       - 'scripts/prepare_articles.py'
       - 'scripts/build_catalogs.py'
+      - 'scripts/build_sitemap.py'
       - '.github/workflows/article-audio.yml'
   workflow_dispatch:
 
@@ -40,11 +41,13 @@ jobs:
         run: python scripts/generate_audio.py
       - name: Update search and listening lists
         run: python scripts/build_catalogs.py
+      - name: Update sitemap
+        run: python scripts/build_sitemap.py
       - name: Publish article assets and catalogs
         run: |
           git config user.name "Síla myšlenky audio"
           git config user.email "actions@github.com"
-          git add blog audio data/clanky.json data/poslech.json
+          git add blog audio data/clanky.json data/poslech.json sitemap.xml
           if git diff --cached --quiet; then
             echo "No audio changes."
           else
