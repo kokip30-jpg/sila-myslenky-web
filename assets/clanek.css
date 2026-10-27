@@ -139,7 +139,7 @@ footer a,.footer a{color:var(--muted)}
 .sm-ctrl button:hover{border-color:var(--rose)}
 .article-audio{padding:0!important;border:0!important;background:none!important;backdrop-filter:none!important}
 .article-audio > strong{display:none}
-@media(max-width:520px){.sm-ctrl .sm-skip{display:none}}
+@media(max-width:520px){.sm-ctrl .sm-skip{display:none}.sm-title{white-space:normal;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;line-height:1.3}}
 
 /* ---------- společné prvky nových stránek (kvíz, tvůj prostor, pro blízké) ---------- */
 .page-head{padding:clamp(48px,8vh,88px) 0 24px}
