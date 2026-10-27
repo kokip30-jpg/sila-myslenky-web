@@ -1,0 +1,87 @@
+/* 3D „Cesta zpátky k sobě" (assets/cesta.js): sdílené styly pro cesta.html i úvodní stránku.
+   Všechno je pod .journey, aby se styly nepletly s okolní stránkou. Cesta je vždy noční. */
+.journey{--j-ink:#F3E9E2;--j-muted:#C9C1D8;--j-rose:#E8B4B8;--j-gold:#f3d79a;--j-line:rgba(243,233,226,.16);--j-glass:rgba(16,13,34,.62);
+  --j-serif:Fraunces,Georgia,serif;--j-sans:Figtree,"Segoe UI",system-ui,sans-serif;
+  position:relative;background:#0b0a18;color:var(--j-ink);color-scheme:dark}
+.journey a{color:inherit}
+
+/* scéna: přilepená přes celou výšku cesty, obsah plyne nad ní */
+.journey-stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;z-index:0}
+.journey-canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.journey-fallback{position:absolute;inset:0;background:radial-gradient(120% 80% at 50% 100%,#3a2a55,#0b0a18 70%);display:none}
+.journey.no-webgl .journey-fallback{display:block}
+.journey-vignette{position:absolute;inset:0;pointer-events:none;background:radial-gradient(130% 90% at 50% 45%,transparent 55%,rgba(6,5,14,.55))}
+.journey-markers{position:absolute;inset:0;pointer-events:none}
+.journey .marker{position:absolute;left:0;top:0;transform:translate(-50%,-100%);display:flex;flex-direction:column;align-items:center;gap:6px;white-space:nowrap;transition:opacity .4s;will-change:transform}
+.journey .marker b{font:italic 400 15px/1 var(--j-serif);color:var(--j-gold)}
+.journey .marker span{font:600 11px/1 var(--j-sans);letter-spacing:.18em;text-transform:uppercase;color:var(--j-ink);text-shadow:0 1px 10px #000}
+.journey .marker::after{content:"";width:1px;height:28px;background:linear-gradient(var(--j-gold),transparent)}
+
+/* ukazatel zastávek */
+.journey-rail{position:absolute;z-index:3;right:max(18px,3vw);top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:18px;list-style:none;margin:0;padding:0}
+.journey-rail a{display:flex;align-items:center;justify-content:flex-end;gap:12px;text-decoration:none;color:var(--j-muted);font:500 12px/1 var(--j-sans);letter-spacing:.14em;text-transform:uppercase}
+.journey-rail a span{opacity:0;transform:translateX(6px);transition:.4s}
+.journey-rail a i{width:30px;height:30px;border-radius:50%;border:1px solid var(--j-line);display:grid;place-items:center;font:italic 400 13px/1 var(--j-serif);letter-spacing:0;text-transform:none;background:rgba(16,13,34,.4);transition:.4s}
+.journey-rail a:hover span,.journey-rail a.on span{opacity:1;transform:none}
+.journey-rail a.on{color:var(--j-ink)}
+.journey-rail a.on i{border-color:var(--j-gold);color:#1b1530;background:var(--j-gold);box-shadow:0 0 18px rgba(243,215,154,.6)}
+.journey-rail a.done i{border-color:rgba(243,215,154,.6);color:var(--j-gold)}
+.journey-rail a:focus-visible{outline:2px solid var(--j-rose);outline-offset:4px;border-radius:999px}
+
+/* obsah nad scénou */
+.journey-content{position:relative;z-index:1;margin-top:-100vh;margin-top:-100svh}
+.journey-intro{min-height:100vh;min-height:100svh;display:grid;align-content:center;padding:120px max(20px,7vw) 80px;max-width:900px}
+.journey .j-kicker{display:flex;align-items:center;gap:12px;font:600 12px/1.4 var(--j-sans);letter-spacing:.18em;text-transform:uppercase;color:var(--j-rose)}
+.journey .j-kicker::before{content:"";width:28px;height:1px;background:currentColor}
+.journey h1{font:300 clamp(46px,7.2vw,108px)/.98 var(--j-serif);font-variation-settings:"opsz" 144;letter-spacing:-.025em;margin:.25em 0 .25em;color:var(--j-ink);text-shadow:0 2px 40px rgba(8,7,18,.7)}
+.journey h1 em{color:var(--j-gold);font-weight:300}
+.journey-intro p{max-width:34em;color:var(--j-muted);font-size:clamp(16px,1.3vw,19px);text-shadow:0 1px 20px rgba(8,7,18,.8)}
+.journey .j-go{display:inline-flex;align-items:center;gap:14px;margin-top:30px;font:600 12px/1 var(--j-sans);letter-spacing:.16em;text-transform:uppercase;color:var(--j-ink);text-decoration:none}
+.journey .j-go i{width:1px;height:42px;background:linear-gradient(var(--j-ink),transparent);animation:j-drip 2.2s ease-in-out infinite;transform-origin:top}
+@keyframes j-drip{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
+.journey .j-skip{margin-left:22px;font-size:13px;color:var(--j-muted)}
+
+.journey .chapter{min-height:110vh;padding:0 max(20px,7vw)}
+.journey .panel{position:sticky;top:18vh;max-width:430px;padding:30px 30px 26px;border:1px solid var(--j-line);border-radius:26px;background:var(--j-glass);backdrop-filter:blur(16px) saturate(1.2);-webkit-backdrop-filter:blur(16px) saturate(1.2);box-shadow:0 30px 80px -30px rgba(0,0,0,.7);opacity:.25;transform:translateY(24px);transition:opacity .8s,transform .8s;color:var(--j-ink)}
+.journey .chapter.on .panel{opacity:1;transform:none}
+.journey .num{display:flex;align-items:baseline;gap:12px;font:600 11px/1 var(--j-sans);letter-spacing:.2em;text-transform:uppercase;color:var(--j-muted)}
+.journey .num b{font:italic 300 46px/1 var(--j-serif);letter-spacing:0;color:var(--j-gold)}
+.journey h2{font:300 clamp(34px,3.6vw,48px)/1.05 var(--j-serif);font-variation-settings:"opsz" 144;margin:.35em 0 .4em;color:var(--j-ink);max-width:none}
+.journey .panel p{color:var(--j-muted);margin:0 0 18px;font-size:17px}
+.journey .panel h3{font:600 11px/1.4 var(--j-sans);letter-spacing:.16em;text-transform:uppercase;color:var(--j-rose);margin:22px 0 8px}
+.journey .panel ul{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+.journey .panel ul a{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--j-line);font:400 17px/1.35 var(--j-serif);text-decoration:none}
+.journey .panel ul a::after{content:"→";color:var(--j-gold)}
+.journey .panel ul a:hover{color:var(--j-gold)}
+.journey .step{display:flex;gap:12px;align-items:flex-start;margin-top:18px;padding:14px 16px;border-radius:16px;background:rgba(243,215,154,.08);border:1px solid rgba(243,215,154,.25);text-decoration:none}
+.journey .step i{flex:0 0 8px;height:8px;margin-top:8px;border-radius:50%;background:var(--j-gold);box-shadow:0 0 12px var(--j-gold)}
+.journey .step span{font-size:15px;color:var(--j-ink)}
+.journey .step span em{display:block;font-style:normal;font-size:13px;color:var(--j-muted)}
+
+.journey-finale{min-height:100vh;display:grid;align-content:center;justify-items:center;text-align:center;padding:100px 20px 120px}
+.journey-finale h2{font-size:clamp(40px,6vw,84px);max-width:13ch;text-shadow:0 2px 40px rgba(40,20,40,.5)}
+.journey-finale p{max-width:32em;color:var(--j-ink);opacity:.85}
+.journey .j-cta{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:26px}
+.journey-intro .j-cta{justify-content:flex-start}
+.journey .j-btn{display:inline-flex;align-items:center;min-height:48px;padding:0 24px;border-radius:999px;font:600 15px/1 var(--j-sans);text-decoration:none;border:1px solid var(--j-line);color:var(--j-ink);background:rgba(16,13,34,.45);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.journey .j-btn.primary{background:var(--j-gold);color:#1b1530;border-color:transparent;box-shadow:0 12px 34px -12px rgba(243,215,154,.8)}
+.journey .j-btn:focus-visible,.journey .panel a:focus-visible,.journey .j-go:focus-visible{outline:2px solid var(--j-rose);outline-offset:4px}
+/* přechod ze scény do zbytku stránky */
+.journey-fade{height:22vh;margin-top:-22vh;position:relative;pointer-events:none;background:linear-gradient(rgba(11,10,24,0),var(--bg,#0b0a18))}
+
+/* kratší verze na úvodní stránce */
+.journey.compact .chapter{min-height:88vh}
+.journey.compact .journey-finale{min-height:90vh}
+
+@media (max-width:760px){
+  .journey-rail{right:10px;gap:12px}.journey-rail a span{display:none}.journey-rail a i{width:26px;height:26px;font-size:12px}
+  .journey .chapter{padding:0 14px;min-height:145vh}
+  .journey.compact .chapter{min-height:120vh}
+  .journey .panel{top:34svh;max-height:calc(66svh - 30px);overflow:auto;margin-top:15vh;max-width:none;padding:20px 18px 16px;margin-right:44px}
+  .journey .panel p{font-size:15px;margin-bottom:12px}
+  .journey .panel ul a{font-size:16px;padding:7px 0}
+  .journey .num b{font-size:36px}
+  .journey .marker span{font-size:10px}
+  .journey .j-skip{display:block;margin:14px 0 0}
+}
+@media (prefers-reduced-motion:reduce){.journey .j-go i{animation:none}.journey .panel{transition:none}}

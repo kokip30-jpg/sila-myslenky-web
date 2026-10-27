@@ -165,7 +165,7 @@ main{padding-top:0}
     ? `<a class="tile" href="kviz.html"><b>${faze.n}</b><span>Tvoje fáze podle kvízu. Fáze se mění, klidně si ho projdi znovu.</span><em>Tvoje fáze →</em></a>`
     : `<a class="tile" href="kviz.html"><b>Ve které fázi jsi?</b><span>Pět otázek a cesta, která začíná tam, kde právě jsi.</span><em>Spustit kvíz →</em></a>`);
   if (last?.url) tiles.push(`<a class="tile" href="${last.url}"><b>${last.title}</b><span>Naposledy jsi četl(a) tenhle text.</span><em>Pokračovat →</em></a>`);
-  tiles.push('<a class="tile" href="index.html#dech"><b>Minuta dechu</b><span>Nádech na čtyři, výdech na šest. Spolu s koulí na úvodní stránce.</span><em>Nadechnout se →</em></a>');
+  tiles.push('<a class="tile" href="cesta.html"><b>Cesta zpátky k sobě</b><span>Projdi si cestu po rozchodu od ticha až k novému začátku.</span><em>Vydat se na cestu →</em></a>');
   document.getElementById('foryou').innerHTML = tiles.join('');
   if (saved.length) document.getElementById('saved-count').textContent = `Máš uložené texty: ${saved.length}.`;
 

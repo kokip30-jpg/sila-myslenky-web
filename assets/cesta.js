@@ -1,9 +1,12 @@
 // „Cesta zpátky k sobě": 3D krajina, kterou se při posouvání stránky prochází po svítící stezce.
 // Krajina vzniká z kódu (šum + údolí vyhloubené podél stezky), takže nejsou potřeba žádné 3D modely.
-// Pět zastávek odpovídá kapitolám v cesta.html; nebe cestou přechází z noci do svítání.
+// Pět zastávek odpovídá kapitolám (.chapter) uvnitř .journey; nebe cestou přechází z noci do svítání.
+// Používá ho cesta.html i úvodní stránka; styly jsou v assets/cesta.css, ovládání bez 3D v assets/cesta-ui.js.
 import * as THREE from 'three';
 
-const canvas = document.getElementById('world');
+const root = document.querySelector('.journey');
+const stage = root.querySelector('.journey-stage');
+const canvas = root.querySelector('.journey-canvas');
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const small = innerWidth < 760 || Math.min(innerWidth, innerHeight) < 600;
 
@@ -11,7 +14,7 @@ let renderer;
 try {
   renderer = new THREE.WebGLRenderer({ canvas, antialias: !small, powerPreference: 'high-performance' });
 } catch (e) {
-  document.documentElement.classList.add('no-webgl');
+  root.classList.add('no-webgl');
   throw e;
 }
 window.__cesta = true;
@@ -139,7 +142,7 @@ scene.add(trailDim, trailLit, trailHalo);
 const reveal = t => { const n = Math.max(0, Math.min(TUBE_SEG, Math.round(t * TUBE_SEG))) * RADIAL * 6; trailLit.geometry.setDrawRange(0, n); trailHalo.geometry.setDrawRange(0, n); };
 
 /* ---------- zastávky: světla, paprsky, štítky ---------- */
-const markersEl = document.getElementById('markers');
+const markersEl = root.querySelector('.journey-markers');
 const stations = STOPS.map((s, k) => {
   const p = path.getPointAt(s);
   const orb = glow(0xffd590, .95); orb.scale.setScalar(6); orb.position.copy(p).add(new THREE.Vector3(0, 3.4, 0));
@@ -231,18 +234,19 @@ scene.add(hemi, moonLight, sunLight);
 scene.fog = new THREE.FogExp2(NIGHT.horizon.clone(), .0068);
 
 /* ---------- posouvání stránky → pozice na stezce ---------- */
-const chapters = [...document.querySelectorAll('.chapter')];
-const finale = document.getElementById('konec');
+const chapters = [...root.querySelectorAll('.chapter')];
+const finale = root.querySelector('.journey-finale');
+const docTop = el => el.getBoundingClientRect().top + scrollY;   // poloha v dokumentu, ať cesta může být kdekoli na stránce
 let keys = [];
 function buildKeys() {
   const vh = innerHeight;
-  keys = [[0, 0, 0, 1]];                                   // úvod: záběr z výšky přes celé údolí
+  keys = [[docTop(root), 0, 0, 1]];                           // úvod: záběr z výšky přes celé údolí
   chapters.forEach((ch, k) => {
-    keys.push([ch.offsetTop - vh * .25, STOPS[k] - .012, 0, 0]);
-    keys.push([ch.offsetTop + ch.offsetHeight - vh * 1.05, Math.min(1, STOPS[k] + .018), 0, 0]);
+    keys.push([docTop(ch) - vh * .25, STOPS[k] - .012, 0, 0]);
+    keys.push([docTop(ch) + ch.offsetHeight - vh * 1.05, Math.min(1, STOPS[k] + .018), 0, 0]);
   });
-  keys.push([finale.offsetTop - vh * .4, 1, 0, 0]);
-  keys.push([finale.offsetTop + finale.offsetHeight - vh, 1, 1, 0]);
+  keys.push([docTop(finale) - vh * .4, 1, 0, 0]);
+  keys.push([docTop(finale) + finale.offsetHeight - vh, 1, 1, 0]);
 }
 function targetAt(y) {
   if (y <= keys[0][0]) return keys[0];
@@ -258,7 +262,7 @@ function targetAt(y) {
 
 /* ---------- rozměry ---------- */
 function resize() {
-  const w = innerWidth, h = innerHeight;
+  const w = stage.clientWidth, h = stage.clientHeight;
   renderer.setSize(w, h, false);
   camera.aspect = w / h;
   camera.updateProjectionMatrix();
@@ -273,13 +277,16 @@ addEventListener('pointermove', e => pointer.set(e.clientX / innerWidth - .5, e.
 
 /* ---------- smyčka ---------- */
 const state = { t: 0, f: 0, o: 1 };
-const overviewPos = new THREE.Vector3(150, 140, 250), overviewLook = new THREE.Vector3(-10, 10, 10);
+const overviewPos = new THREE.Vector3(150, 140, 250), overviewLook = new THREE.Vector3(small ? -10 : -125, small ? 10 : -8, small ? 10 : 50);
 const camPos = new THREE.Vector3(), look = new THREE.Vector3(), lookNow = new THREE.Vector3(), tmp = new THREE.Vector3(), up = new THREE.Vector3(0, 1, 0);
 const startView = path.getPointAt(.4);
 const summitTop = path.getPointAt(1);
 let first = true, last = 0;
 
+let onScreen = true;
+new IntersectionObserver(es => { onScreen = es[0].isIntersecting; }).observe(root);   // mimo cestu nekreslíme
 function frame(now) {
+  if (!onScreen && !first) { requestAnimationFrame(frame); return; }
   const [, tt, ff, oo] = targetAt(scrollY);
   const dt = Math.min(.1, (now - last) / 1000 || .016); last = now;
   const k = first || reduce ? 1 : 1 - Math.exp(-dt * 3.2);   // plynulost podle času, ne podle počtu snímků
@@ -334,7 +341,7 @@ function frame(now) {
   skyGroup.position.copy(camera.position);
 
   // zastávky: aktivní svítí víc, štítky sledují světla
-  const w = innerWidth, h = innerHeight;
+  const w = stage.clientWidth, h = stage.clientHeight;
   stations.forEach((s, i) => {
     const near = 1 - smooth(.0, .06, Math.abs(t - STOPS[i]));
     s.orb.scale.setScalar(6 + near * 3 + Math.sin(now * .003 + i) * .4 * near);
