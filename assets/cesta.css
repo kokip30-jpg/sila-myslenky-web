@@ -75,9 +75,11 @@
 
 @media (max-width:760px){
   .journey-rail{right:10px;gap:12px}.journey-rail a span{display:none}.journey-rail a i{width:26px;height:26px;font-size:12px}
-  .journey .chapter{padding:0 14px;min-height:145vh}
-  .journey.compact .chapter{min-height:120vh}
-  .journey .panel{top:34svh;max-height:calc(66svh - 30px);overflow:auto;margin-top:15vh;max-width:none;padding:20px 18px 16px;margin-right:44px}
+  /* na telefonu panel nemá vlastní posouvání ani nelepí: jede se stránkou přes scénu,
+     jinak by prst posouval jen panel a stránka by stála */
+  .journey .chapter{padding:62vh 14px 30vh;min-height:0}
+  .journey.compact .chapter{padding:48vh 14px 18vh}
+  .journey .panel{position:relative;top:auto;max-height:none;overflow:visible;margin-top:0;max-width:none;padding:20px 18px 16px;margin-right:44px;opacity:1;transform:none}
   .journey .panel p{font-size:15px;margin-bottom:12px}
   .journey .panel ul a{font-size:16px;padding:7px 0}
   .journey .num b{font-size:36px}
