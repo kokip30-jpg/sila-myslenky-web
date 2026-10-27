@@ -317,7 +317,7 @@ header.on-dark{--ink:#F3E9E2;--muted:#C9C1D8;--rose:#E8B4B8;--line:rgba(243,233,
 <meta name="twitter:title" content="Síla myšlenky | Texty pro rozchody, vztahy a návrat k sobě">
 <meta name="twitter:description" content="Texty pro rozchody, vztahy a návrat k sobě. Když je toho moc, najdeš tu klidné čtení a malé kroky pro dnešek.">
 <meta name="twitter:image" content="https://sila-myslenky.com/media/og-sila-myslenky-v1.png">
-</head>
+<link rel="manifest" href="/manifest.webmanifest"><meta name="theme-color" content="#1C1B33"><link rel="icon" href="/assets/icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png"></head>
 <body>
 
 <header>
@@ -561,7 +561,7 @@ header.on-dark{--ink:#F3E9E2;--muted:#C9C1D8;--rose:#E8B4B8;--line:rgba(243,233,
       const it = lists[current][i]; if (!it) return;
       idx = i; audio.src = it.a; player.setMeta(it.t, current === 'na-noc' ? 'Na noc' : 'Nejnovější');
       listEl.querySelectorAll('button').forEach((b, k) => b.setAttribute('aria-current', k === i));
-      if (autoplay) audio.play().catch(() => {});
+      if (autoplay) { audio.play().catch(() => {}); window.smTrack?.('listen_play', {list: current, title: it.t}); }
     }
     function render(){
       document.querySelectorAll('.listen-tabs [data-list]').forEach(b => b.setAttribute('aria-selected', b.dataset.list === current));
@@ -627,6 +627,7 @@ header.on-dark{--ink:#F3E9E2;--muted:#C9C1D8;--rose:#E8B4B8;--line:rgba(243,233,
   btn.addEventListener('click', () => {
     if (!ta.value.trim()) { paper.classList.remove('nudge'); void paper.offsetWidth; paper.classList.add('nudge'); ta.focus(); return; }
     after.classList.remove('show'); btn.disabled = true;
+    window.smTrack?.('letter_release', {});
     if (reduce) { ta.classList.add('ghost'); setTimeout(finish, 500); return; }
 
     const r = ta.getBoundingClientRect(), cs = getComputedStyle(ta);

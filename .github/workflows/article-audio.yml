@@ -9,6 +9,7 @@ on:
       - 'scripts/prepare_articles.py'
       - 'scripts/build_catalogs.py'
       - 'scripts/build_sitemap.py'
+      - 'scripts/build_share_images.py'
       - '.github/workflows/article-audio.yml'
   workflow_dispatch:
 
@@ -30,6 +31,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Install image tools
+        run: pip install --quiet Pillow
       - name: Prepare article pages
         run: python scripts/prepare_articles.py
       - name: Generate Azure Speech MP3 files
@@ -39,6 +42,8 @@ jobs:
           AZURE_SPEECH_KEY: ${{ secrets.AZURE_SPEECH_KEY }}
           AZURE_SPEECH_REGION: eastus
         run: python scripts/generate_audio.py
+      - name: Create share images and Instagram cards
+        run: python scripts/build_share_images.py
       - name: Update search and listening lists
         run: python scripts/build_catalogs.py
       - name: Update sitemap
@@ -47,7 +52,7 @@ jobs:
         run: |
           git config user.name "Síla myšlenky audio"
           git config user.email "actions@github.com"
-          git add blog audio data/clanky.json data/poslech.json sitemap.xml
+          git add blog audio data/clanky.json data/poslech.json sitemap.xml media/og media/instagram
           if git diff --cached --quiet; then
             echo "No audio changes."
           else

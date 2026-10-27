@@ -36,7 +36,7 @@
 .outcome h3{font:600 12px/1.4 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--rose);margin:44px 0 14px}
 .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
 </style>
-</head>
+<link rel="manifest" href="/manifest.webmanifest"><meta name="theme-color" content="#1C1B33"><link rel="icon" href="/assets/icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png"></head>
 <body>
 <header><div class="wrap nav"><a class="brand" href="index.html">Síla myšlenky</a><a href="muj-prostor.html">Tvůj prostor →</a></div></header>
 <main class="wrap">
@@ -111,6 +111,7 @@
     </div>`);
     box.querySelectorAll('[data-f]').forEach(b => b.addEventListener('click', () => {
       answers[i] = b.dataset.f;
+      track('quiz_step', { step: i + 1 });
       i + 1 < Q.length ? question(i + 1) : result();
     }));
     box.querySelector('.back-q')?.addEventListener('click', () => question(i - 1));

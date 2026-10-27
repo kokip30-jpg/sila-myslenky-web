@@ -12,6 +12,7 @@ BLOG = ROOT / "blog"
 AUDIO = ROOT / "audio"
 ASSETS = ROOT / "assets"
 STYLE = '<link rel="stylesheet" href="../assets/clanek.css">'
+APP = '<link rel="manifest" href="/manifest.webmanifest"><meta name="theme-color" content="#1C1B33"><link rel="icon" href="/assets/icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">'
 PLAYER = '<script src="../assets/prehravac.js" defer></script>'
 AUDIO_BOX = re.compile(r'<div\b[^>]*class="[^"]*\barticle-audio\b[^"]*"[^>]*>.*?</div>', re.I | re.S)
 AUDIO_SRC = re.compile(r'<audio\b[^>]*\bsrc="([^"]+)"', re.I | re.S)
@@ -66,6 +67,8 @@ def webp(source: str) -> str:
 def prepare(source: str, stem: str) -> str:
     if 'clanek.css' not in source and '</head>' in source:
         source = source.replace('</head>', STYLE + '</head>', 1)
+    if 'manifest.webmanifest' not in source and '</head>' in source:
+        source = source.replace('</head>', APP + '</head>', 1)
     if 'prehravac.js' not in source and '</body>' in source:
         source = source.replace('</body>', PLAYER + '</body>', 1)
     source = describe(webp(source))

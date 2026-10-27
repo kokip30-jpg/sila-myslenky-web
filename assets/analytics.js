@@ -6,6 +6,5 @@
   const box=document.createElement('aside');box.id='sm-consent';box.innerHTML='<strong>Analytika webu</strong><span>Pomáhá nám zjistit, které články a průvodce lidem pomáhají. Nepoužíváme ji pro reklamu.</span><a href="/soukromi.html">Více o soukromí</a><div><button data-accept>Přijmout</button><button data-decline>Odmítnout</button></div>';
   const style=document.createElement('style');style.textContent='#sm-consent{position:fixed;z-index:9999;right:18px;bottom:18px;max-width:380px;padding:18px;border:1px solid rgba(255,255,255,.22);border-radius:18px;background:#211c31f5;color:#f3e9e2;box-shadow:0 14px 46px #0008;font:14px/1.45 system-ui,-apple-system,sans-serif}#sm-consent strong,#sm-consent span,#sm-consent a{display:block}#sm-consent span{margin:6px 0;color:#d3cad8}#sm-consent a{color:#f2b7c5;margin-bottom:12px}#sm-consent div{display:flex;gap:8px}#sm-consent button{border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:9px 13px;background:transparent;color:#f3e9e2;font-weight:700;cursor:pointer}#sm-consent button[data-accept]{background:#e8b4b8;color:#251e31;border-color:#e8b4b8}@media(max-width:500px){#sm-consent{left:12px;right:12px;bottom:12px;max-width:none}}';document.head.appendChild(style);document.body.appendChild(box);box.querySelector('[data-accept]').onclick=()=>{localStorage.setItem(key,'accepted');box.remove();load()};box.querySelector('[data-decline]').onclick=()=>{localStorage.setItem(key,'declined');box.remove()};
 })();
-
-
-
+// Web jako aplikace: offline režim pro denní nástroje (viz /sw.js)
+if('serviceWorker' in navigator&&location.protocol!=='file:')addEventListener('load',()=>navigator.serviceWorker.register('/sw.js').catch(()=>{}));

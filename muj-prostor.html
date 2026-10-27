@@ -38,9 +38,12 @@ main{padding-top:0}
 .section-title{font:600 12px/1.4 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--rose);margin:48px 0 14px}
 .privacy{margin:48px 0 80px;font-size:14px;color:var(--muted)}
 .privacy button{background:none;border:0;color:var(--rose);font:500 14px var(--sans);cursor:pointer;text-decoration:underline;padding:0}
-@media(max-width:760px){.grid2{grid-template-columns:1fr}}
+.install{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-top:48px}
+.install b{display:block;font:400 22px/1.3 var(--serif);margin-bottom:4px}
+.install span{color:var(--muted);font-size:15px}
+@media(max-width:760px){.grid2{grid-template-columns:1fr}.install{flex-direction:column;align-items:flex-start}}
 </style>
-</head>
+<link rel="manifest" href="/manifest.webmanifest"><meta name="theme-color" content="#1C1B33"><link rel="icon" href="/assets/icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png"></head>
 <body>
 <header><div class="wrap nav"><a class="brand" href="index.html">Síla myšlenky</a><a href="blog/">Číst blog →</a></div></header>
 <main class="wrap">
@@ -81,6 +84,11 @@ main{padding-top:0}
     <a class="tile" href="sedm-dni.html"><b>7 dní zpátky k sobě</b><span>Krátká minisérie na první týden.</span><em>Začít →</em></a>
     <a class="tile" href="hledat.html"><b>Hledat</b><span>Napiš, co tě trápí, a najdi text.</span><em>Hledat →</em></a>
   </div>
+
+  <section class="panel install" id="install" hidden>
+    <div><b>Měj svůj prostor po ruce.</b><span id="install-text">Přidej si Sílu myšlenky na plochu. Otevře se jako aplikace a Tvůj prostor, večerní zápis a malé kroky fungují i bez internetu.</span></div>
+    <button class="button" type="button" id="install-btn">Přidat na plochu</button>
+  </section>
 
   <p class="privacy">Data ukládá jen tvůj prohlížeč. Nikam se neodesílají a nikdo jiný je nevidí. <button type="button" id="wipe">Smazat moje nálady a výsledek kvízu</button></p>
 </main>
@@ -135,7 +143,7 @@ main{padding-top:0}
     for (let d = 1; d <= len; d++) {
       const key = iso(new Date(y, m, d)), mood = byId[data[key]];
       if (mood) { count++; freq[mood.id] = (freq[mood.id] || 0) + 1; }
-      html += `<span class="day${mood ? ' has' : ''}${key === today ? ' today' : ''}"${mood ? ` style="--c:${mood.c}" title="${d}. ${mood.n}"` : ''}>${d}</span>`;
+      html += `<span class="day${mood ? ' has' : ''}${key === today ? ' today' : ''}"${mood ? ` style="--c:${mood.c}" title="${d}. ${mood.n}" aria-label="${d}. ${MONTHS[m]}: ${mood.n}"` : ` aria-label="${d}. ${MONTHS[m]}: bez záznamu"`} role="img">${d}</span>`;
     }
     document.getElementById('days').innerHTML = html;
     const top = Object.entries(freq).sort((a, b) => b[1] - a[1])[0];
@@ -160,6 +168,23 @@ main{padding-top:0}
   tiles.push('<a class="tile" href="index.html#dech"><b>Minuta dechu</b><span>Nádech na čtyři, výdech na šest. Spolu s koulí na úvodní stránce.</span><em>Nadechnout se →</em></a>');
   document.getElementById('foryou').innerHTML = tiles.join('');
   if (saved.length) document.getElementById('saved-count').textContent = `Máš uložené texty: ${saved.length}.`;
+
+  /* přidání na plochu: Android/Chrome nabídne dialog, na iPhonu ukážeme postup */
+  const install = document.getElementById('install'), installBtn = document.getElementById('install-btn');
+  const standalone = matchMedia('(display-mode: standalone)').matches || navigator.standalone;
+  let deferred = null;
+  addEventListener('beforeinstallprompt', e => { e.preventDefault(); deferred = e; if (!standalone) install.hidden = false; });
+  if (!standalone && /iphone|ipad|ipod/i.test(navigator.userAgent)) {
+    install.hidden = false; installBtn.hidden = true;
+    document.getElementById('install-text').textContent = 'Na iPhonu klepni v Safari na ikonu Sdílet a zvol „Přidat na plochu". Tvůj prostor pak funguje jako aplikace, i bez internetu.';
+  }
+  installBtn.addEventListener('click', async () => {
+    if (!deferred) return;
+    deferred.prompt();
+    const { outcome } = await deferred.userChoice;
+    window.trackAnalytics?.('pwa_install_prompt', { outcome });
+    deferred = null; install.hidden = true;
+  });
 
   document.getElementById('wipe').addEventListener('click', () => {
     if (!confirm('Opravdu smazat všechny zaznamenané nálady a výsledek kvízu? Nejde to vrátit.')) return;
