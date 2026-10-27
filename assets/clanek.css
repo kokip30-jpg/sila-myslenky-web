@@ -186,3 +186,13 @@ footer a,.footer a{color:var(--muted)}
 .fb-nav button:hover:not(:disabled){border-color:var(--rose)}
 .fb-nav button:disabled{opacity:.35;cursor:default}
 .fb-count{min-width:150px;text-align:center;font:500 14px var(--sans);color:var(--muted)}
+
+/* úvodní obraz článku: snímek z jeho zastávky na 3D cestě (scripts/prepare_articles.py) */
+.cesta-cover{position:relative;display:flex;align-items:flex-end;justify-content:space-between;gap:14px;height:260px;margin:22px 0 30px;padding:20px 22px;border-radius:22px;overflow:hidden;isolation:isolate;text-decoration:none;color:#F3E9E2;background:#0b0a18 var(--cover) center/cover;box-shadow:0 24px 60px -34px rgba(20,14,40,.75)}
+.cesta-cover::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(transparent 35%,rgba(11,10,24,.82))}
+.cesta-cover span{display:flex;align-items:baseline;gap:10px;font:600 11px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase}
+.cesta-cover span b{font:italic 300 30px/1 var(--serif);letter-spacing:0;color:#f3d79a}
+.cesta-cover em{font:600 13px/1 var(--sans);font-style:normal;color:#f3d79a;opacity:.85;transition:opacity .3s,transform .3s}
+.cesta-cover:hover em{opacity:1;transform:translateX(3px)}
+.cesta-cover:focus-visible{outline:2px solid var(--rose);outline-offset:4px}
+@media(max-width:600px){.cesta-cover{height:190px;padding:16px 18px}.cesta-cover span b{font-size:24px}}

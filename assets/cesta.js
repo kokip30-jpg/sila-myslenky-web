@@ -53,11 +53,20 @@ const ground = new THREE.CatmullRomCurve3(
   false, 'centripetal');
 const SAMPLES = 320;
 const samples = ground.getSpacedPoints(SAMPLES);
+const SZ = samples.map(p => p.z), SX = samples.map(p => p.x);
+const CARVE = 85;   // dál od stezky už na vzdálenosti nezáleží (údolí končí), stačí hrubý odhad
+// Stezka vede od jihu k severu (z stále klesá), takže stačí projít body s podobným z: kolem nich se hledá nejbližší.
 function nearest(x, z) {
-  let best = Infinity, bi = 0;
-  for (let i = 0; i <= SAMPLES; i++) {
-    const dx = x - samples[i].x, dz = z - samples[i].z, d = dx * dx + dz * dz;
-    if (d < best) { best = d; bi = i; }
+  let lo = 0, hi = SAMPLES;
+  while (lo < hi) { const m = (lo + hi) >> 1; if (SZ[m] > z) lo = m + 1; else hi = m; }
+  let best = CARVE * CARVE, bi = Math.min(SAMPLES, lo);
+  for (let dir = -1; dir <= 1; dir += 2) {
+    for (let i = dir < 0 ? lo - 1 : lo; i >= 0 && i <= SAMPLES; i += dir) {
+      const dz = z - SZ[i];
+      if (dz * dz >= best) break;
+      const dx = x - SX[i], d = dx * dx + dz * dz;
+      if (d < best) { best = d; bi = i; }
+    }
   }
   return [Math.sqrt(best), bi / SAMPLES];
 }
@@ -143,6 +152,7 @@ const reveal = t => { const n = Math.max(0, Math.min(TUBE_SEG, Math.round(t * TU
 
 /* ---------- zastávky: světla, paprsky, štítky ---------- */
 const markersEl = root.querySelector('.journey-markers');
+const HERE = (() => { try { return { ticho: 0, stesk: 1, jasno: 2, navrat: 3 }[JSON.parse(localStorage.getItem('sm-faze'))?.id] ?? -1; } catch (e) { return -1; } })();
 const stations = STOPS.map((s, k) => {
   const p = path.getPointAt(s);
   const orb = glow(0xffd590, .95); orb.scale.setScalar(6); orb.position.copy(p).add(new THREE.Vector3(0, 3.4, 0));
@@ -151,7 +161,8 @@ const stations = STOPS.map((s, k) => {
   scene.add(orb, beam);
   const el = document.createElement('div');
   el.className = 'marker';
-  el.innerHTML = `<b>${NAMES[k][0]}</b><span>${NAMES[k][1]}</span>`;
+  el.innerHTML = `<b>${NAMES[k][0]}</b><span>${NAMES[k][1]}</span>${k === HERE ? '<em>Tady jsi</em>' : ''}`;
+  if (k === HERE) { el.classList.add('here'); orb.scale.setScalar(9); }
   markersEl.append(el);
   return { orb, beam, el, at: p.clone().add(new THREE.Vector3(0, 10, 0)) };
 });
@@ -277,6 +288,7 @@ addEventListener('pointermove', e => pointer.set(e.clientX / innerWidth - .5, e.
 
 /* ---------- smyčka ---------- */
 const state = { t: 0, f: 0, o: 1 };
+root.journeyState = state;   // čte ho assets/cesta-zvuk.js
 const overviewPos = new THREE.Vector3(150, 140, 250), overviewLook = new THREE.Vector3(small ? -10 : -125, small ? 10 : -8, small ? 10 : 50);
 const camPos = new THREE.Vector3(), look = new THREE.Vector3(), lookNow = new THREE.Vector3(), tmp = new THREE.Vector3(), up = new THREE.Vector3(0, 1, 0);
 const startView = path.getPointAt(.4);
@@ -284,11 +296,29 @@ const summitTop = path.getPointAt(1);
 let first = true, last = 0;
 
 let onScreen = true;
+// adaptivní kvalita: když zařízení nestíhá, ubereme rozlišení a částice
+let quality = 0, frames = 0, slowTime = 0;
+const flies = scene.children.find(o => o.isPoints && o.geometry === flyGeo);
+function adapt(dt) {
+  if (quality >= 2) return;
+  frames++; slowTime += dt;
+  if (frames < 90) return;
+  const fps = frames / slowTime;
+  frames = 0; slowTime = 0;
+  if (fps > 34) return;
+  quality++;
+  renderer.setPixelRatio(quality === 1 ? Math.min(renderer.getPixelRatio(), 1) : .75);
+  flyUniforms.uPR.value = renderer.getPixelRatio();
+  if (flies) flies.visible = false;
+  if (quality === 2) mists.forEach(m => { m.visible = false; });
+  resize();
+}
 new IntersectionObserver(es => { onScreen = es[0].isIntersecting; }).observe(root);   // mimo cestu nekreslíme
 function frame(now) {
   if (!onScreen && !first) { requestAnimationFrame(frame); return; }
   const [, tt, ff, oo] = targetAt(scrollY);
   const dt = Math.min(.1, (now - last) / 1000 || .016); last = now;
+  if (!first && !document.hidden) adapt(dt);
   const k = first || reduce ? 1 : 1 - Math.exp(-dt * 3.2);   // plynulost podle času, ne podle počtu snímků
   state.t += (tt - state.t) * k;
   state.f += (ff - state.f) * k;
@@ -311,7 +341,7 @@ function frame(now) {
   if (o > .001) { camPos.lerp(overviewPos, o); look.lerp(overviewLook, o); }
   camPos.y = Math.max(camPos.y, height(camPos.x, camPos.z) + 7);   // nikdy pod terén
   look.x += pointer.x * 6; look.y -= pointer.y * 3;
-  if (first) { camera.position.copy(camPos); lookNow.copy(look); first = false; }
+  if (first) { camera.position.copy(camPos); lookNow.copy(look); first = false; requestAnimationFrame(() => root.classList.add('ready')); }
   camera.position.lerp(camPos, reduce ? 1 : 1 - Math.exp(-dt * 6));
   lookNow.lerp(look, reduce ? 1 : 1 - Math.exp(-dt * 5));
   camera.lookAt(lookNow);

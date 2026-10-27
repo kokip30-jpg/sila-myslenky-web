@@ -19,6 +19,18 @@ AUDIO_SRC = re.compile(r'<audio\b[^>]*\bsrc="([^"]+)"', re.I | re.S)
 IMAGE = re.compile(r'assets/([A-Za-z0-9_/-]+)\.(?:png|jpe?g)')
 DESC_LEN = 160
 
+# Úvodní obraz článku je snímek ze 3D cesty (cesta.html), ze zastávky, ke které článek patří.
+STOPS = {'ticho': ('I', 'Ticho'), 'stesk': ('II', 'Stesk'), 'jasno': ('III', 'Jasno'),
+         'navrat': ('IV', 'Návrat k sobě'), 'zacatek': ('V', 'Nový začátek')}
+OLD_COVER = re.compile(r'<div\b[^>]*class="[^"]*\barticle-cover\b[^"]*"[^>]*>\s*</div>', re.I)
+CESTA_COVER = re.compile(r'<a\b[^>]*class="cesta-cover"[^>]*>.*?</a>', re.I | re.S)
+# série na blogu (štítek nad nadpisem) → zastávka na cestě
+SERIES = [('navrat k sobe', 'zacatek'), ('samota', 'navrat'), ('duvera v sebe', 'navrat'),
+          ('sebeucta', 'jasno'), ('hranice', 'jasno'), ('vzpominky', 'stesk'), ('smutek', 'stesk'), ('pustit', 'ticho')]
+# slova v nadpisu, která článek posunou na konkrétní zastávku i uvnitř série
+TITLE_WORDS = [(('napsat', 'ozval', 'stysk', 'chce vratit', 'vzpomin', 'hezk'), 'stesk'),
+               (('signal', 'hranic', 'manipul'), 'jasno'), (('samot',), 'navrat')]
+
 
 def plain(markup: str) -> str:
     return ' '.join(html.unescape(re.sub(r'<[^>]*>', ' ', markup)).split())
@@ -64,6 +76,55 @@ def webp(source: str) -> str:
     return IMAGE.sub(lambda m: f'assets/{m.group(1)}.webp' if (ASSETS / f'{m.group(1)}.webp').is_file() else m.group(0), source)
 
 
+def ascii_fold(value: str) -> str:
+    return ''.join(c for c in unicodedata.normalize('NFD', value.lower()) if unicodedata.category(c) != 'Mn')
+
+
+def journey_links() -> dict[str, str]:
+    """Články, které cesta.html sama ukazuje u některé zastávky, patří právě k ní."""
+    page = ROOT / 'cesta.html'
+    links: dict[str, str] = {}
+    if not page.is_file():
+        return links
+    for stop, body in re.findall(r'<section\b[^>]*class="chapter"[^>]*id="(\w+)"[^>]*>(.*?)</section>', page.read_text(encoding='utf-8'), re.S):
+        for slug in re.findall(r'href="blog/([\w-]+)\.html"', body):
+            links.setdefault(slug, stop)
+    return links
+
+
+JOURNEY = journey_links()
+
+
+def stop_for(source: str, stem: str) -> str:
+    if stem in JOURNEY:
+        return JOURNEY[stem]
+    h1 = re.search(r'<h1\b[^>]*>(.*?)</h1>', source, re.I | re.S)
+    title = ascii_fold(plain(h1.group(1))) if h1 else ''
+    for words, stop in TITLE_WORDS:
+        if any(w in title for w in words):
+            return stop
+    eyebrow = re.search(r'<article\b[^>]*>\s*<div class="eyebrow">(.*?)</div>', source, re.I | re.S)
+    series = ascii_fold(plain(eyebrow.group(1))) if eyebrow else ''
+    for words, stop in SERIES:
+        if words in series:
+            return stop
+    return 'ticho'
+
+
+def cover(source: str, stem: str) -> str:
+    """Nahradí starý ilustrační obraz (nebo doplní chybějící) snímkem ze zastávky na cestě."""
+    stop = stop_for(source, stem)
+    num, name = STOPS[stop]
+    tag = (f'<a class="cesta-cover" href="../cesta.html#{stop}" style="--cover:url(../assets/cesta/{stop}.webp)" '
+           f'aria-label="Zastávka {num}, {name}: ukázat na cestě zpátky k sobě">'
+           f'<span><b>{num}</b>{name}</span><em>Ukázat na cestě →</em></a>')
+    if CESTA_COVER.search(source):
+        return CESTA_COVER.sub(lambda m: tag, source, count=1)
+    if OLD_COVER.search(source):
+        return OLD_COVER.sub(lambda m: tag, source, count=1)
+    return re.sub(r'(</h1>)', lambda m: m.group(1) + tag, source, count=1, flags=re.I)
+
+
 def prepare(source: str, stem: str) -> str:
     if 'clanek.css' not in source and '</head>' in source:
         source = source.replace('</head>', STYLE + '</head>', 1)
@@ -71,7 +132,7 @@ def prepare(source: str, stem: str) -> str:
         source = source.replace('</head>', APP + '</head>', 1)
     if 'prehravac.js' not in source and '</body>' in source:
         source = source.replace('</body>', PLAYER + '</body>', 1)
-    source = describe(webp(source))
+    source = cover(describe(webp(source)), stem)
 
     expected = f'../audio/{stem}.mp3'
 

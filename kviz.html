@@ -35,6 +35,14 @@
 .outcome .lead{max-width:34em}
 .outcome h3{font:600 12px/1.4 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--rose);margin:44px 0 14px}
 .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+/* odkaz na vlastní zastávku ve 3D cestě, se snímkem z té scény */
+.to-journey{position:relative;display:grid;align-content:end;min-height:220px;margin-top:30px;padding:24px 26px;border-radius:24px;overflow:hidden;text-decoration:none;color:#F3E9E2;background:#0b0a18 center/cover;isolation:isolate;box-shadow:0 24px 60px -30px rgba(20,14,40,.7)}
+.to-journey::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(transparent 20%,rgba(11,10,24,.85))}
+.to-journey small{font:600 11px/1.4 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:#f3d79a}
+.to-journey b{font:300 clamp(24px,3vw,32px)/1.15 var(--serif);margin:.2em 0 .5em}
+.to-journey span{display:inline-flex;justify-self:start;align-items:center;min-height:44px;padding:0 20px;border-radius:999px;background:#f3d79a;color:#1b1530;font:600 15px/1 var(--sans)}
+.to-journey:hover span{box-shadow:0 10px 30px -10px rgba(243,215,154,.9)}
+.to-journey:focus-visible{outline:2px solid var(--rose);outline-offset:4px}
 </style>
 <link rel="manifest" href="/manifest.webmanifest"><meta name="theme-color" content="#1C1B33"><link rel="icon" href="/assets/icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png"></head>
 <body>
@@ -130,6 +138,11 @@
       <div class="eyebrow">Tvoje fáze · ${f.e}</div>
       <h1 tabindex="-1">${f.n}</h1>
       <p class="lead">${f.t}</p>
+      <a class="to-journey" id="to-journey" href="cesta.html#${id}" style="background-image:url('assets/cesta/${id}.webp')">
+        <small>Zastávka ${f.e.replace('Fáze ', '')} z 5 na cestě zpátky k sobě</small>
+        <b>Tady na cestě teď jsi.</b>
+        <span>Ukaž mi to na cestě →</span>
+      </a>
       <h3>Začni tady</h3>
       <div class="tiles">${f.a.map(([t, u]) => `<a class="tile" href="${u}"><b>${t}</b><em>Číst →</em></a>`).join('')}</div>
       <h3>Malý krok a průvodce</h3>
@@ -143,6 +156,7 @@
       </div>
       <p class="small">Tohle není diagnóza. Jen orientace, kde začít. Fáze se navíc mění a klidně se prolínají.</p>
     </div>`);
+    document.getElementById('to-journey').addEventListener('click', () => track('quiz_to_journey', { faze: id }));
     document.getElementById('again').addEventListener('click', () => { answers.length = 0; question(0); });
   }
   document.getElementById('start').addEventListener('click', () => { track('quiz_start', {}); question(0); });

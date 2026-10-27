@@ -13,7 +13,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 BLOG = ROOT / "blog"
 AUDIO = ROOT / "audio"
-SKIP_CLASSES = {"article-date", "date", "sm-meta", "article-tools", "article-cover", "end", "micro-step", "back", "nav", "tag"}
+SKIP_CLASSES = {"article-date", "date", "sm-meta", "article-tools", "article-cover", "cesta-cover", "end", "micro-step", "back", "nav", "tag"}
 
 class ArticleText(HTMLParser):
     def __init__(self):
