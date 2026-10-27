@@ -2,6 +2,11 @@
   "_poznamka": "Automaticky sestaveno z článků, ke kterým existuje MP3 v audio/.",
   "nejnovejsi": [
     {
+      "t": "Kdy je samota odpočinkem a kdy už chceš někoho pustit blíž",
+      "u": "blog/kdy-je-samota-odpocinkem-a-kdy-uz-chces-nekoho-pustit-bliz.html",
+      "a": "audio/kdy-je-samota-odpocinkem-a-kdy-uz-chces-nekoho-pustit-bliz.mp3"
+    },
+    {
       "t": "Když máš den jen pro sebe a nevíš, jak ho prožít",
       "u": "blog/kdyz-mas-den-jen-pro-sebe-a-nevis-jak-ho-prozit.html",
       "a": "audio/kdyz-mas-den-jen-pro-sebe-a-nevis-jak-ho-prozit.mp3"
@@ -25,14 +30,14 @@
       "t": "Když se večer přestaneš před sebou schovávat",
       "u": "blog/kdyz-se-vecer-prestanes-pred-sebou-schovavat.html",
       "a": "audio/kdyz-se-vecer-prestanes-pred-sebou-schovavat.mp3"
-    },
-    {
-      "t": "Když se bojíš, že budeš druhým na obtíž",
-      "u": "blog/kdyz-se-bojis-ze-budes-druhym-na-obtiz.html",
-      "a": "audio/kdyz-se-bojis-ze-budes-druhym-na-obtiz.mp3"
     }
   ],
   "na-noc": [
+    {
+      "t": "Kdy je samota odpočinkem a kdy už chceš někoho pustit blíž",
+      "u": "blog/kdy-je-samota-odpocinkem-a-kdy-uz-chces-nekoho-pustit-bliz.html",
+      "a": "audio/kdy-je-samota-odpocinkem-a-kdy-uz-chces-nekoho-pustit-bliz.mp3"
+    },
     {
       "t": "Když se večer přestaneš před sebou schovávat",
       "u": "blog/kdyz-se-vecer-prestanes-pred-sebou-schovavat.html",
@@ -57,11 +62,6 @@
       "t": "Když ticho začne být snesitelnější",
       "u": "blog/kdyz-ticho-zacne-byt-snesitelnejsi.html",
       "a": "audio/kdyz-ticho-zacne-byt-snesitelnejsi.mp3"
-    },
-    {
-      "t": "Když po hněvu přijde únava",
-      "u": "blog/hned-po-hnevu-prichazi-unava.html",
-      "a": "audio/hned-po-hnevu-prichazi-unava.mp3"
     }
   ]
 }
