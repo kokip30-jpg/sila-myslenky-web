@@ -2,6 +2,11 @@
   "_poznamka": "Automaticky sestaveno z článků, ke kterým existuje MP3 v audio/.",
   "nejnovejsi": [
     {
+      "t": "Jak začít znovu potkávat lidi bez tlaku",
+      "u": "blog/jak-zacit-znovu-potkavat-lidi-bez-tlaku.html",
+      "a": "audio/jak-zacit-znovu-potkavat-lidi-bez-tlaku.mp3"
+    },
+    {
       "t": "Kdy je samota odpočinkem a kdy už chceš někoho pustit blíž",
       "u": "blog/kdy-je-samota-odpocinkem-a-kdy-uz-chces-nekoho-pustit-bliz.html",
       "a": "audio/kdy-je-samota-odpocinkem-a-kdy-uz-chces-nekoho-pustit-bliz.mp3"
@@ -25,11 +30,6 @@
       "t": "Když si doma začneš dělat místo po svém",
       "u": "blog/kdyz-si-doma-zacnes-delat-misto-po-svem.html",
       "a": "audio/kdyz-si-doma-zacnes-delat-misto-po-svem.mp3"
-    },
-    {
-      "t": "Když se večer přestaneš před sebou schovávat",
-      "u": "blog/kdyz-se-vecer-prestanes-pred-sebou-schovavat.html",
-      "a": "audio/kdyz-se-vecer-prestanes-pred-sebou-schovavat.mp3"
     }
   ],
   "na-noc": [
