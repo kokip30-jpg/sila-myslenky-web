@@ -2,6 +2,11 @@
   "_poznamka": "Automaticky sestaveno z článků, ke kterým existuje MP3 v audio/.",
   "nejnovejsi": [
     {
+      "t": "Když je ti s někým dobře a potřebuješ i svůj čas",
+      "u": "blog/kdyz-je-ti-s-nekym-dobre-a-potrebujes-i-svuj-cas.html",
+      "a": "audio/kdyz-je-ti-s-nekym-dobre-a-potrebujes-i-svuj-cas.mp3"
+    },
+    {
       "t": "Jak začít znovu potkávat lidi bez tlaku",
       "u": "blog/jak-zacit-znovu-potkavat-lidi-bez-tlaku.html",
       "a": "audio/jak-zacit-znovu-potkavat-lidi-bez-tlaku.mp3"
@@ -25,11 +30,6 @@
       "t": "Když chceš někam jít, ale nechce se ti jít sám",
       "u": "blog/kdyz-chces-nekam-jit-ale-nechce-se-ti-jit-sam.html",
       "a": "audio/kdyz-chces-nekam-jit-ale-nechce-se-ti-jit-sam.mp3"
-    },
-    {
-      "t": "Když si doma začneš dělat místo po svém",
-      "u": "blog/kdyz-si-doma-zacnes-delat-misto-po-svem.html",
-      "a": "audio/kdyz-si-doma-zacnes-delat-misto-po-svem.mp3"
     }
   ],
   "na-noc": [
