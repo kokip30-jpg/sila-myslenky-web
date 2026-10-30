@@ -2,6 +2,11 @@
   "_poznamka": "Automaticky sestaveno z článků, ke kterým existuje MP3 v audio/.",
   "nejnovejsi": [
     {
+      "t": "Když se po hezkém setkání vrátíš do tichého bytu",
+      "u": "blog/kdyz-se-po-hezkem-setkani-vratis-do-ticheho-bytu.html",
+      "a": "audio/kdyz-se-po-hezkem-setkani-vratis-do-ticheho-bytu.mp3"
+    },
+    {
       "t": "Když je ti s někým dobře a potřebuješ i svůj čas",
       "u": "blog/kdyz-je-ti-s-nekym-dobre-a-potrebujes-i-svuj-cas.html",
       "a": "audio/kdyz-je-ti-s-nekym-dobre-a-potrebujes-i-svuj-cas.mp3"
@@ -25,11 +30,6 @@
       "t": "Když se v tichu začne ozývat tvůj vlastní hlas",
       "u": "blog/kdyz-se-v-tichu-zacne-ozyvat-tvuj-vlastni-hlas.html",
       "a": "audio/kdyz-se-v-tichu-zacne-ozyvat-tvuj-vlastni-hlas.mp3"
-    },
-    {
-      "t": "Když chceš někam jít, ale nechce se ti jít sám",
-      "u": "blog/kdyz-chces-nekam-jit-ale-nechce-se-ti-jit-sam.html",
-      "a": "audio/kdyz-chces-nekam-jit-ale-nechce-se-ti-jit-sam.mp3"
     }
   ],
   "na-noc": [
