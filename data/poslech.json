@@ -2,6 +2,11 @@
   "_poznamka": "Automaticky sestaveno z článků, ke kterým existuje MP3 v audio/.",
   "nejnovejsi": [
     {
+      "t": "Malé věci, díky kterým je doma víc tvoje",
+      "u": "blog/male-veci-diky-kterym-je-doma-vic-tvoje.html",
+      "a": "audio/male-veci-diky-kterym-je-doma-vic-tvoje.mp3"
+    },
+    {
       "t": "Když se po hezkém setkání vrátíš do tichého bytu",
       "u": "blog/kdyz-se-po-hezkem-setkani-vratis-do-ticheho-bytu.html",
       "a": "audio/kdyz-se-po-hezkem-setkani-vratis-do-ticheho-bytu.mp3"
@@ -25,11 +30,6 @@
       "t": "Když máš den jen pro sebe a nevíš, jak ho prožít",
       "u": "blog/kdyz-mas-den-jen-pro-sebe-a-nevis-jak-ho-prozit.html",
       "a": "audio/kdyz-mas-den-jen-pro-sebe-a-nevis-jak-ho-prozit.mp3"
-    },
-    {
-      "t": "Když se v tichu začne ozývat tvůj vlastní hlas",
-      "u": "blog/kdyz-se-v-tichu-zacne-ozyvat-tvuj-vlastni-hlas.html",
-      "a": "audio/kdyz-se-v-tichu-zacne-ozyvat-tvuj-vlastni-hlas.mp3"
     }
   ],
   "na-noc": [
