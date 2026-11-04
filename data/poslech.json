@@ -2,6 +2,11 @@
   "_poznamka": "Automaticky sestaveno z článků, ke kterým existuje MP3 v audio/.",
   "nejnovejsi": [
     {
+      "t": "Když začneš hlídat náladu druhého a svoje slova",
+      "u": "blog/kdyz-zacnes-hlidat-naladu-druheho-a-svoje-slova.html",
+      "a": "audio/kdyz-zacnes-hlidat-naladu-druheho-a-svoje-slova.mp3"
+    },
+    {
       "t": "Když se poprvé neshodnete a ty chceš raději ustoupit",
       "u": "blog/kdyz-se-poprve-neshodnete-a-ty-chces-radeji-ustoupit.html",
       "a": "audio/kdyz-se-poprve-neshodnete-a-ty-chces-radeji-ustoupit.mp3"
@@ -25,11 +30,6 @@
       "t": "Když se po hezkém setkání vrátíš do tichého bytu",
       "u": "blog/kdyz-se-po-hezkem-setkani-vratis-do-ticheho-bytu.html",
       "a": "audio/kdyz-se-po-hezkem-setkani-vratis-do-ticheho-bytu.mp3"
-    },
-    {
-      "t": "Když je ti s někým dobře a potřebuješ i svůj čas",
-      "u": "blog/kdyz-je-ti-s-nekym-dobre-a-potrebujes-i-svuj-cas.html",
-      "a": "audio/kdyz-je-ti-s-nekym-dobre-a-potrebujes-i-svuj-cas.mp3"
     }
   ],
   "na-noc": [
