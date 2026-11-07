@@ -2,6 +2,11 @@
   "_poznamka": "Automaticky sestaveno z článků, ke kterým existuje MP3 v audio/.",
   "nejnovejsi": [
     {
+      "t": "Když řekneš, co potřebuješ, a druhý to přeslechne",
+      "u": "blog/kdyz-reknes-co-potrebujes-a-druhy-to-preslechne.html",
+      "a": "audio/kdyz-reknes-co-potrebujes-a-druhy-to-preslechne.mp3"
+    },
+    {
       "t": "Když pro nového člověka začneš zařizovat všechno",
       "u": "blog/kdyz-pro-noveho-cloveka-zacnes-zarizovat-vsechno.html",
       "a": "audio/kdyz-pro-noveho-cloveka-zacnes-zarizovat-vsechno.mp3"
@@ -25,11 +30,6 @@
       "t": "Když se ti někdo líbí a nechceš se zase ztratit",
       "u": "blog/kdyz-se-ti-nekdo-libi-a-nechces-se-zase-ztratit.html",
       "a": "audio/kdyz-se-ti-nekdo-libi-a-nechces-se-zase-ztratit.mp3"
-    },
-    {
-      "t": "Když den o samotě není jen čekání na někoho",
-      "u": "blog/kdyz-den-o-samote-neni-jen-cekani-na-nekoho.html",
-      "a": "audio/kdyz-den-o-samote-neni-jen-cekani-na-nekoho.mp3"
     }
   ],
   "na-noc": [
