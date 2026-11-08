@@ -2,6 +2,11 @@
   "_poznamka": "Automaticky sestaveno z článků, ke kterým existuje MP3 v audio/.",
   "nejnovejsi": [
     {
+      "t": "Jak poznáš, že v novém vztahu zůstáváš sám sebou",
+      "u": "blog/jak-poznas-ze-v-novem-vztahu-zustavas-sam-sebou.html",
+      "a": "audio/jak-poznas-ze-v-novem-vztahu-zustavas-sam-sebou.mp3"
+    },
+    {
       "t": "Když řekneš, co potřebuješ, a druhý to přeslechne",
       "u": "blog/kdyz-reknes-co-potrebujes-a-druhy-to-preslechne.html",
       "a": "audio/kdyz-reknes-co-potrebujes-a-druhy-to-preslechne.mp3"
@@ -25,11 +30,6 @@
       "t": "Když se poprvé neshodnete a ty chceš raději ustoupit",
       "u": "blog/kdyz-se-poprve-neshodnete-a-ty-chces-radeji-ustoupit.html",
       "a": "audio/kdyz-se-poprve-neshodnete-a-ty-chces-radeji-ustoupit.mp3"
-    },
-    {
-      "t": "Když se ti někdo líbí a nechceš se zase ztratit",
-      "u": "blog/kdyz-se-ti-nekdo-libi-a-nechces-se-zase-ztratit.html",
-      "a": "audio/kdyz-se-ti-nekdo-libi-a-nechces-se-zase-ztratit.mp3"
     }
   ],
   "na-noc": [
