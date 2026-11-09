@@ -2,6 +2,11 @@
   "_poznamka": "Automaticky sestaveno z článků, ke kterým existuje MP3 v audio/.",
   "nejnovejsi": [
     {
+      "t": "Když se po rozchodu vracíš k věcem, které byly tvoje",
+      "u": "blog/kdyz-se-po-rozchodu-vracis-k-vecem-ktere-byly-tvoje.html",
+      "a": "audio/kdyz-se-po-rozchodu-vracis-k-vecem-ktere-byly-tvoje.mp3"
+    },
+    {
       "t": "Jak poznáš, že v novém vztahu zůstáváš sám sebou",
       "u": "blog/jak-poznas-ze-v-novem-vztahu-zustavas-sam-sebou.html",
       "a": "audio/jak-poznas-ze-v-novem-vztahu-zustavas-sam-sebou.mp3"
@@ -25,11 +30,6 @@
       "t": "Když začneš hlídat náladu druhého a svoje slova",
       "u": "blog/kdyz-zacnes-hlidat-naladu-druheho-a-svoje-slova.html",
       "a": "audio/kdyz-zacnes-hlidat-naladu-druheho-a-svoje-slova.mp3"
-    },
-    {
-      "t": "Když se poprvé neshodnete a ty chceš raději ustoupit",
-      "u": "blog/kdyz-se-poprve-neshodnete-a-ty-chces-radeji-ustoupit.html",
-      "a": "audio/kdyz-se-poprve-neshodnete-a-ty-chces-radeji-ustoupit.mp3"
     }
   ],
   "na-noc": [
