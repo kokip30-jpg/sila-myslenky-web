@@ -2,6 +2,11 @@
   "_poznamka": "Automaticky sestaveno z článků, ke kterým existuje MP3 v audio/.",
   "nejnovejsi": [
     {
+      "t": "Když si necháš večer pro sebe a někdo je zklamaný",
+      "u": "blog/kdyz-si-nechas-vecer-pro-sebe-a-nekdo-je-zklamany.html",
+      "a": "audio/kdyz-si-nechas-vecer-pro-sebe-a-nekdo-je-zklamany.mp3"
+    },
+    {
       "t": "Jak si v kalendáři nechat místo pro sebe",
       "u": "blog/jak-si-v-kalendari-nechat-misto-pro-sebe.html",
       "a": "audio/jak-si-v-kalendari-nechat-misto-pro-sebe.mp3"
@@ -25,14 +30,14 @@
       "t": "Když řekneš, co potřebuješ, a druhý to přeslechne",
       "u": "blog/kdyz-reknes-co-potrebujes-a-druhy-to-preslechne.html",
       "a": "audio/kdyz-reknes-co-potrebujes-a-druhy-to-preslechne.mp3"
-    },
-    {
-      "t": "Když pro nového člověka začneš zařizovat všechno",
-      "u": "blog/kdyz-pro-noveho-cloveka-zacnes-zarizovat-vsechno.html",
-      "a": "audio/kdyz-pro-noveho-cloveka-zacnes-zarizovat-vsechno.mp3"
     }
   ],
   "na-noc": [
+    {
+      "t": "Když si necháš večer pro sebe a někdo je zklamaný",
+      "u": "blog/kdyz-si-nechas-vecer-pro-sebe-a-nekdo-je-zklamany.html",
+      "a": "audio/kdyz-si-nechas-vecer-pro-sebe-a-nekdo-je-zklamany.mp3"
+    },
     {
       "t": "Kdy je samota odpočinkem a kdy už chceš někoho pustit blíž",
       "u": "blog/kdy-je-samota-odpocinkem-a-kdy-uz-chces-nekoho-pustit-bliz.html",
@@ -57,11 +62,6 @@
       "t": "Samota, která není prázdná",
       "u": "blog/samota-ktera-neni-prazdna.html",
       "a": "audio/samota-ktera-neni-prazdna.mp3"
-    },
-    {
-      "t": "Když ticho začne být snesitelnější",
-      "u": "blog/kdyz-ticho-zacne-byt-snesitelnejsi.html",
-      "a": "audio/kdyz-ticho-zacne-byt-snesitelnejsi.mp3"
     }
   ]
 }
