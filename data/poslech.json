@@ -2,6 +2,11 @@
   "_poznamka": "Automaticky sestaveno z článků, ke kterým existuje MP3 v audio/.",
   "nejnovejsi": [
     {
+      "t": "Když máš volný večer a samota tě zaskočí",
+      "u": "blog/kdyz-mas-volny-vecer-a-samota-te-zaskoci.html",
+      "a": "audio/kdyz-mas-volny-vecer-a-samota-te-zaskoci.mp3"
+    },
+    {
       "t": "Když si necháš večer pro sebe a někdo je zklamaný",
       "u": "blog/kdyz-si-nechas-vecer-pro-sebe-a-nekdo-je-zklamany.html",
       "a": "audio/kdyz-si-nechas-vecer-pro-sebe-a-nekdo-je-zklamany.mp3"
@@ -25,14 +30,14 @@
       "t": "Jak poznáš, že v novém vztahu zůstáváš sám sebou",
       "u": "blog/jak-poznas-ze-v-novem-vztahu-zustavas-sam-sebou.html",
       "a": "audio/jak-poznas-ze-v-novem-vztahu-zustavas-sam-sebou.mp3"
-    },
-    {
-      "t": "Když řekneš, co potřebuješ, a druhý to přeslechne",
-      "u": "blog/kdyz-reknes-co-potrebujes-a-druhy-to-preslechne.html",
-      "a": "audio/kdyz-reknes-co-potrebujes-a-druhy-to-preslechne.mp3"
     }
   ],
   "na-noc": [
+    {
+      "t": "Když máš volný večer a samota tě zaskočí",
+      "u": "blog/kdyz-mas-volny-vecer-a-samota-te-zaskoci.html",
+      "a": "audio/kdyz-mas-volny-vecer-a-samota-te-zaskoci.mp3"
+    },
     {
       "t": "Když si necháš večer pro sebe a někdo je zklamaný",
       "u": "blog/kdyz-si-nechas-vecer-pro-sebe-a-nekdo-je-zklamany.html",
@@ -57,11 +62,6 @@
       "t": "Večer, kdy si stačíš",
       "u": "blog/vecer-kdy-si-stacis.html",
       "a": "audio/vecer-kdy-si-stacis.mp3"
-    },
-    {
-      "t": "Samota, která není prázdná",
-      "u": "blog/samota-ktera-neni-prazdna.html",
-      "a": "audio/samota-ktera-neni-prazdna.mp3"
     }
   ]
 }
