@@ -2,6 +2,11 @@
   "_poznamka": "Automaticky sestaveno z článků, ke kterým existuje MP3 v audio/.",
   "nejnovejsi": [
     {
+      "t": "Když nevíš, jestli chceš být sám, nebo s někým",
+      "u": "blog/kdyz-nevis-jestli-chces-byt-sam-nebo-s-nekym.html",
+      "a": "audio/kdyz-nevis-jestli-chces-byt-sam-nebo-s-nekym.mp3"
+    },
+    {
       "t": "Když máš volný večer a samota tě zaskočí",
       "u": "blog/kdyz-mas-volny-vecer-a-samota-te-zaskoci.html",
       "a": "audio/kdyz-mas-volny-vecer-a-samota-te-zaskoci.mp3"
@@ -25,11 +30,6 @@
       "t": "Když se po rozchodu vracíš k věcem, které byly tvoje",
       "u": "blog/kdyz-se-po-rozchodu-vracis-k-vecem-ktere-byly-tvoje.html",
       "a": "audio/kdyz-se-po-rozchodu-vracis-k-vecem-ktere-byly-tvoje.mp3"
-    },
-    {
-      "t": "Jak poznáš, že v novém vztahu zůstáváš sám sebou",
-      "u": "blog/jak-poznas-ze-v-novem-vztahu-zustavas-sam-sebou.html",
-      "a": "audio/jak-poznas-ze-v-novem-vztahu-zustavas-sam-sebou.mp3"
     }
   ],
   "na-noc": [
