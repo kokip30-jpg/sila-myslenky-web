@@ -2,6 +2,11 @@
   "_poznamka": "Automaticky sestaveno z článků, ke kterým existuje MP3 v audio/.",
   "nejnovejsi": [
     {
+      "t": "Když se konec znovu připomene",
+      "u": "blog/kdyz-se-konec-znovu-pripomene.html",
+      "a": "audio/kdyz-se-konec-znovu-pripomene.mp3"
+    },
+    {
       "t": "Když se ohlédneš a nevidíš velkou změnu",
       "u": "blog/kdyz-se-ohlidnes-a-nevidis-velkou-zmenu.html",
       "a": "audio/kdyz-se-ohlidnes-a-nevidis-velkou-zmenu.mp3"
@@ -25,11 +30,6 @@
       "t": "Jak si v kalendáři nechat místo pro sebe",
       "u": "blog/jak-si-v-kalendari-nechat-misto-pro-sebe.html",
       "a": "audio/jak-si-v-kalendari-nechat-misto-pro-sebe.mp3"
-    },
-    {
-      "t": "Když už nevíš, co vlastně chceš ty",
-      "u": "blog/kdyz-uz-nevis-co-vlastne-chces-ty.html",
-      "a": "audio/kdyz-uz-nevis-co-vlastne-chces-ty.mp3"
     }
   ],
   "na-noc": [
