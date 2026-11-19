@@ -2,6 +2,11 @@
   "_poznamka": "Automaticky sestaveno z článků, ke kterým existuje MP3 v audio/.",
   "nejnovejsi": [
     {
+      "t": "Než po rozchodu odešleš zprávu",
+      "u": "blog/nez-po-rozchodu-odesles-zpravu.html",
+      "a": "audio/nez-po-rozchodu-odesles-zpravu.mp3"
+    },
+    {
       "t": "Když si rozhovor po rozchodu přehráváš pořád dokola",
       "u": "blog/kdyz-se-rozhovor-v-hlave-opakuje.html",
       "a": "audio/kdyz-se-rozhovor-v-hlave-opakuje.mp3"
@@ -25,11 +30,6 @@
       "t": "Když nevíš, jestli chceš být sám, nebo s někým",
       "u": "blog/kdyz-nevis-jestli-chces-byt-sam-nebo-s-nekym.html",
       "a": "audio/kdyz-nevis-jestli-chces-byt-sam-nebo-s-nekym.mp3"
-    },
-    {
-      "t": "Když máš volný večer a samota tě zaskočí",
-      "u": "blog/kdyz-mas-volny-vecer-a-samota-te-zaskoci.html",
-      "a": "audio/kdyz-mas-volny-vecer-a-samota-te-zaskoci.mp3"
     }
   ],
   "na-noc": [
