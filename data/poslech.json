@@ -2,6 +2,11 @@
   "_poznamka": "Automaticky sestaveno z článků, ke kterým existuje MP3 v audio/.",
   "nejnovejsi": [
     {
+      "t": "Když konec nemá jasné vysvětlení",
+      "u": "blog/kdyz-konec-nema-jasne-vysvetleni.html",
+      "a": "audio/kdyz-konec-nema-jasne-vysvetleni.mp3"
+    },
+    {
       "t": "Když odpověď nepřichází",
       "u": "blog/kdyz-odpoved-neprichazi.html",
       "a": "audio/kdyz-odpoved-neprichazi.mp3"
@@ -25,11 +30,6 @@
       "t": "Když se konec znovu připomene",
       "u": "blog/kdyz-se-konec-znovu-pripomene.html",
       "a": "audio/kdyz-se-konec-znovu-pripomene.mp3"
-    },
-    {
-      "t": "Když se ohlédneš a nevidíš velkou změnu",
-      "u": "blog/kdyz-se-ohlidnes-a-nevidis-velkou-zmenu.html",
-      "a": "audio/kdyz-se-ohlidnes-a-nevidis-velkou-zmenu.mp3"
     }
   ],
   "na-noc": [
