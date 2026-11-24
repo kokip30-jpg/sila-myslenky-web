@@ -2,6 +2,11 @@
   "_poznamka": "Automaticky sestaveno z článků, ke kterým existuje MP3 v audio/.",
   "nejnovejsi": [
     {
+      "t": "Co na společných fotkách není vidět",
+      "u": "blog/co-na-spolecnych-fotkach-neni.html",
+      "a": "audio/co-na-spolecnych-fotkach-neni.mp3"
+    },
+    {
       "t": "Když ti vyskočí společná fotka",
       "u": "blog/kdyz-ti-vyskoci-spolecna-fotka.html",
       "a": "audio/kdyz-ti-vyskoci-spolecna-fotka.mp3"
@@ -25,11 +30,6 @@
       "t": "Když si rozhovor po rozchodu přehráváš pořád dokola",
       "u": "blog/kdyz-se-rozhovor-v-hlave-opakuje.html",
       "a": "audio/kdyz-se-rozhovor-v-hlave-opakuje.mp3"
-    },
-    {
-      "t": "Když ti po rozchodu zůstaly otázky",
-      "u": "blog/kdyz-ti-po-rozchodu-zustaly-otazky.html",
-      "a": "audio/kdyz-ti-po-rozchodu-zustaly-otazky.mp3"
     }
   ],
   "na-noc": [
