@@ -2,6 +2,11 @@
   "_poznamka": "Automaticky sestaveno z článků, ke kterým existuje MP3 v audio/.",
   "nejnovejsi": [
     {
+      "t": "Když si říkáš, že jsi měl vydržet déle",
+      "u": "blog/kdyz-si-rikas-ze-jsi-mel-vydrzet-dele.html",
+      "a": "audio/kdyz-si-rikas-ze-jsi-mel-vydrzet-dele.mp3"
+    },
+    {
       "t": "Co na společných fotkách není vidět",
       "u": "blog/co-na-spolecnych-fotkach-neni.html",
       "a": "audio/co-na-spolecnych-fotkach-neni.mp3"
@@ -25,11 +30,6 @@
       "t": "Než po rozchodu odešleš zprávu",
       "u": "blog/nez-po-rozchodu-odesles-zpravu.html",
       "a": "audio/nez-po-rozchodu-odesles-zpravu.mp3"
-    },
-    {
-      "t": "Když si rozhovor po rozchodu přehráváš pořád dokola",
-      "u": "blog/kdyz-se-rozhovor-v-hlave-opakuje.html",
-      "a": "audio/kdyz-se-rozhovor-v-hlave-opakuje.mp3"
     }
   ],
   "na-noc": [
