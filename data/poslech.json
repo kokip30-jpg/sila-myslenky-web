@@ -2,6 +2,11 @@
   "_poznamka": "Automaticky sestaveno z článků, ke kterým existuje MP3 v audio/.",
   "nejnovejsi": [
     {
+      "t": "Když si říkáš, že teď už by to vyšlo",
+      "u": "blog/kdyz-si-rikas-ze-ted-uz-by-to-vyslo.html",
+      "a": "audio/kdyz-si-rikas-ze-ted-uz-by-to-vyslo.mp3"
+    },
+    {
       "t": "Když si říkáš, že jsi měl vydržet déle",
       "u": "blog/kdyz-si-rikas-ze-jsi-mel-vydrzet-dele.html",
       "a": "audio/kdyz-si-rikas-ze-jsi-mel-vydrzet-dele.mp3"
@@ -25,11 +30,6 @@
       "t": "Když odpověď nepřichází",
       "u": "blog/kdyz-odpoved-neprichazi.html",
       "a": "audio/kdyz-odpoved-neprichazi.mp3"
-    },
-    {
-      "t": "Než po rozchodu odešleš zprávu",
-      "u": "blog/nez-po-rozchodu-odesles-zpravu.html",
-      "a": "audio/nez-po-rozchodu-odesles-zpravu.mp3"
     }
   ],
   "na-noc": [
