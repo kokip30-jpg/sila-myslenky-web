@@ -2,6 +2,11 @@
   "_poznamka": "Automaticky sestaveno z článků, ke kterým existuje MP3 v audio/.",
   "nejnovejsi": [
     {
+      "t": "Když ti chybí něčí hlas cestou domů",
+      "u": "blog/kdyz-ti-chybi-neci-hlas-cestou-domu.html",
+      "a": "audio/kdyz-ti-chybi-neci-hlas-cestou-domu.mp3"
+    },
+    {
       "t": "Když si říkáš, že teď už by to vyšlo",
       "u": "blog/kdyz-si-rikas-ze-ted-uz-by-to-vyslo.html",
       "a": "audio/kdyz-si-rikas-ze-ted-uz-by-to-vyslo.mp3"
@@ -25,11 +30,6 @@
       "t": "Když konec nemá jasné vysvětlení",
       "u": "blog/kdyz-konec-nema-jasne-vysvetleni.html",
       "a": "audio/kdyz-konec-nema-jasne-vysvetleni.mp3"
-    },
-    {
-      "t": "Když odpověď nepřichází",
-      "u": "blog/kdyz-odpoved-neprichazi.html",
-      "a": "audio/kdyz-odpoved-neprichazi.mp3"
     }
   ],
   "na-noc": [
