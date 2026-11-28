@@ -2,6 +2,11 @@
   "_poznamka": "Automaticky sestaveno z článků, ke kterým existuje MP3 v audio/.",
   "nejnovejsi": [
     {
+      "t": "Když tě písnička vrátí do starého pokoje",
+      "u": "blog/kdyz-te-pisnicka-vrati-do-stareho-pokoje.html",
+      "a": "audio/kdyz-te-pisnicka-vrati-do-stareho-pokoje.mp3"
+    },
+    {
       "t": "Když ti chybí něčí hlas cestou domů",
       "u": "blog/kdyz-ti-chybi-neci-hlas-cestou-domu.html",
       "a": "audio/kdyz-ti-chybi-neci-hlas-cestou-domu.mp3"
@@ -25,11 +30,6 @@
       "t": "Když ti vyskočí společná fotka",
       "u": "blog/kdyz-ti-vyskoci-spolecna-fotka.html",
       "a": "audio/kdyz-ti-vyskoci-spolecna-fotka.mp3"
-    },
-    {
-      "t": "Když konec nemá jasné vysvětlení",
-      "u": "blog/kdyz-konec-nema-jasne-vysvetleni.html",
-      "a": "audio/kdyz-konec-nema-jasne-vysvetleni.mp3"
     }
   ],
   "na-noc": [
